@@ -7,9 +7,9 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/home/2ins2/ksadki01/Documents/synthese/GLImac-Template/CMake/FindGLEW.cmake"
-  "/home/2ins2/ksadki01/Documents/synthese/GLImac-Template/CMakeLists.txt"
-  "/home/2ins2/ksadki01/Documents/synthese/GLImac-Template/glimac/CMakeLists.txt"
+  "/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/GLImac-Template/CMake/FindGLEW.cmake"
+  "/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/GLImac-Template/CMakeLists.txt"
+  "/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/GLImac-Template/glimac/CMakeLists.txt"
   "CMakeFiles/3.7.2/CMakeCCompiler.cmake"
   "CMakeFiles/3.7.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.7.2/CMakeSystem.cmake"

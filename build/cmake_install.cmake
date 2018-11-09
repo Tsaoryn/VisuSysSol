@@ -1,4 +1,4 @@
-# Install script for directory: /home/2ins2/ksadki01/Documents/synthese/GLImac-Template
+# Install script for directory: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/GLImac-Template
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/2ins2/ksadki01/Documents/synthese/build/glimac/cmake_install.cmake")
+  include("/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/build/glimac/cmake_install.cmake")
 
 endif()
 
@@ -46,5 +46,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/2ins2/ksadki01/Documents/synthese/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

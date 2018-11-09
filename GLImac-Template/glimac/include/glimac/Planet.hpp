@@ -22,7 +22,6 @@ namespace glimac {
             
             void initTexture();
             void initTextureExtra();
-            void initMoons(std::list<Moon> moons);
         public:
             Planet(Planet const&);
         
