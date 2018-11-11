@@ -21,7 +21,7 @@ namespace glimac {
             void initTexture();
             void initPlanets(PlanetProgram programPlanet, MoonProgram programMoon);
         public:
-            Sun(SunProgram programSun, PlanetProgram programPlanet, MoonProgram programMoon, Sphere sphere = Sphere(1.0, 32, 16), std::string pathImg = "/home/2ins2/ksadki01/Documents/synthese/GLImac-Template/assets/textures/SunMap.jpg", float rotation = 25.0f):
+            Sun(SunProgram programSun, PlanetProgram programPlanet, MoonProgram programMoon, Sphere sphere = Sphere(1.0, 32, 16), std::string pathImg = "/home/2ins2/ksadki01/Documents/synthese/GLImac-Template/assets/textures/SunMap.jpg", float rotation = 25.0f*24):
              _rotation(rotation), _programSun(programSun), _sphere(sphere){
                 _imgSun = loadImage(pathImg);
                 this->initVboVao();
