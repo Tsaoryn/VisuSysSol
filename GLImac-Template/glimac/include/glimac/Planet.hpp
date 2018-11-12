@@ -24,10 +24,14 @@ namespace glimac {
             void initTexture();
             void initTextureExtra();
         public:
-            Planet(Planet const&);
+            Planet(Planet const&){}
+            
+            Planet(){}
         
-            Planet(std::string pathImg, std::string pathImg2, std::list<Moon> moons, bool extra, bool rings, float ellipse, float diameter, float orbitalPeriod, float lengthDays, float orbitalInclination, PlanetProgram programPlanet):
-            _moons(moons),_ellipse(ellipse), _extra(extra), _rings(rings), _diameter(diameter), _orbitalPeriod(orbitalPeriod), _lengthDays(lengthDays), _orbitalInclination(orbitalInclination), _programPlanet(programPlanet){
+            Planet(char* path, std::string pathImg, std::string pathImg2, std::list<Moon> moons, bool extra, bool rings, float ellipse, float diameter, float orbitalPeriod, float lengthDays, float orbitalInclination):
+            _moons(moons),_ellipse(ellipse), _extra(extra), _rings(rings), _diameter(diameter), _orbitalPeriod(orbitalPeriod), _lengthDays(lengthDays), _orbitalInclination(orbitalInclination){
+                FilePath applicationPath(path);
+                _programPlanet = {applicationPath};
                 _imgPlanet = loadImage(pathImg);
                 this->initTexture();
                 

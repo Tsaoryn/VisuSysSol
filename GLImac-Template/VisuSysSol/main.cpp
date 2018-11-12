@@ -3,6 +3,11 @@
 #include <glimac/Program.hpp>
 #include <glimac/FilePath.hpp>
 #include <glimac/Sun.hpp>
+
+#include <glimac/SunProgram.hpp>
+#include <glimac/PlanetProgram.hpp>
+#include <glimac/MoonProgram.hpp>
+
 #include <glimac/Image.hpp>
 #include <glimac/TrackballCamera.hpp>
 #include <glimac/FreeFlyCamera.hpp>
@@ -14,18 +19,8 @@ int main(int argc, char** argv) {
      /*********************************************************************************
      * WINDOW AND OPENGL INITIALIZATIONS
      *********************************************************************************/
-    // Initialize SDL and open a window
     SDLWindowManager windowManager(1000, 1000, "GLImac");
-
-    // Initialize glew for OpenGL3+ support
     GLenum glewInitError = glewInit();
-    FilePath applicationPath(argv[0]);
-    
-    SunProgram sunProgram(applicationPath);
-    PlanetProgram planetProgram(applicationPath);
-    MoonProgram moonProgram(applicationPath);
-    
-    
     glEnable(GL_DEPTH_TEST);
     
     if(GLEW_OK != glewInitError) {
@@ -37,7 +32,7 @@ int main(int argc, char** argv) {
     std::cout << "GLEW Version : " << glewGetString(GLEW_VERSION) << std::endl;
 
     /*****************************************************************************************/
-    Sun sun = {sunProgram, planetProgram, moonProgram};
+    Sun sun = {argv[0]};
     
     bool done = false;
     while(!done) {
@@ -55,7 +50,7 @@ int main(int argc, char** argv) {
          
         /***************************************************************************************/ 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        //sun.drawSystem();
+        sun.drawSystem();
         // Update the display
         windowManager.swapBuffers();
     }

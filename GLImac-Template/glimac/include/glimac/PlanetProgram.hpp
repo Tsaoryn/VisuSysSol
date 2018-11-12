@@ -13,11 +13,11 @@ namespace glimac {
             GLint uPlanetTexture;
             GLint uExtraTexture;
             
-            PlanetProgram(PlanetProgram const&);
+            PlanetProgram(){}
             
             PlanetProgram(const FilePath& applicationPath):
-            m_Program(loadProgram(applicationPath.dirPath() + "../../../VisuSysSol/shaders/3D.vs.glsl",
-                                  applicationPath.dirPath() + "../../../VisuSysSol/shaders/tex3D.fs.glsl")) {
+            m_Program(loadProgram(applicationPath.dirPath() + "/shaders/3D.vs.glsl",
+                                  applicationPath.dirPath() + "/shaders/tex3D.fs.glsl")) {
             uMVPMatrix = glGetUniformLocation(m_Program.getGLId(), "uMVPMatrix");
             uMVMatrix = glGetUniformLocation(m_Program.getGLId(), "uMVMatrix");
             uNormalMatrix = glGetUniformLocation(m_Program.getGLId(), "uNormalMatrix");

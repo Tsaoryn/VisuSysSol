@@ -17,6 +17,12 @@ glimac/FilePath.hpp
 -
 glimac/Sun.hpp
 -
+glimac/SunProgram.hpp
+-
+glimac/PlanetProgram.hpp
+-
+glimac/MoonProgram.hpp
+-
 glimac/Image.hpp
 -
 glimac/TrackballCamera.hpp

@@ -16,10 +16,14 @@ namespace glimac {
             
             void initTexture();
         public:
-            Moon(Moon const&);
+            Moon(Moon const&){}
             
-            Moon(std::string name,std::string pathImg, float ellipse, float diameter, float inclination, MoonProgram programMoon):
-            _name(name), _ellipse(ellipse), _diameter(diameter), _inclination(inclination), _programMoon(programMoon){
+            Moon(){}
+            
+            Moon(char* path, std::string name,std::string pathImg, float ellipse, float diameter, float inclination):
+            _name(name), _ellipse(ellipse), _diameter(diameter), _inclination(inclination){
+                FilePath applicationPath(path);
+                _programMoon = {applicationPath};
                 _imgMoon = loadImage(pathImg);
                 initTexture();
             }
