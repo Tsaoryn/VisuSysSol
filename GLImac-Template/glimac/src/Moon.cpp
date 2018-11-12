@@ -13,4 +13,8 @@ namespace glimac{
     std::string Moon::getName(){
         return _name;
     }
+    
+    void Moon::deleteTextures(){
+        glDeleteTextures(1,&_textureMoon);
+    }
 }

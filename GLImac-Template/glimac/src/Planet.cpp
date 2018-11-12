@@ -18,4 +18,12 @@ namespace glimac{
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glBindTexture(GL_TEXTURE_2D, 0);
     }
+    
+    void Planet::deleteTextures(){
+        glDeleteTextures(1,&_texturePlanet);
+        if(_extra)
+            glDeleteTextures(1,&_textureExtra);
+        for(Moon & moon : _moons)
+            moon.deleteTextures();
+    }
 }

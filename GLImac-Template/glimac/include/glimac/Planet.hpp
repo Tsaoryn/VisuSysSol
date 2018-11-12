@@ -14,6 +14,7 @@ namespace glimac {
             std::list<Moon> _moons;
             
             bool _extra;
+            bool _rings;
             float _ellipse;
             float _diameter;
             float _orbitalPeriod;
@@ -25,8 +26,8 @@ namespace glimac {
         public:
             Planet(Planet const&);
         
-            Planet(std::string pathImg, std::string pathImg2, std::list<Moon> moons, bool extra, float ellipse, float diameter, float orbitalPeriod, float lengthDays, float orbitalInclination, PlanetProgram programPlanet):
-            _moons(moons),_ellipse(ellipse), _extra(extra), _diameter(diameter), _orbitalPeriod(orbitalPeriod), _lengthDays(lengthDays), _orbitalInclination(orbitalInclination), _programPlanet(programPlanet){
+            Planet(std::string pathImg, std::string pathImg2, std::list<Moon> moons, bool extra, bool rings, float ellipse, float diameter, float orbitalPeriod, float lengthDays, float orbitalInclination, PlanetProgram programPlanet):
+            _moons(moons),_ellipse(ellipse), _extra(extra), _rings(rings), _diameter(diameter), _orbitalPeriod(orbitalPeriod), _lengthDays(lengthDays), _orbitalInclination(orbitalInclination), _programPlanet(programPlanet){
                 _imgPlanet = loadImage(pathImg);
                 this->initTexture();
                 
@@ -35,5 +36,7 @@ namespace glimac {
                     this->initTextureExtra();
                 }
             }
+            
+            void deleteTextures();
     };
 }

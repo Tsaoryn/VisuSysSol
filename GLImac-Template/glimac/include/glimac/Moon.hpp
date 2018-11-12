@@ -25,5 +25,6 @@ namespace glimac {
             }
             
             std::string getName();
+            void deleteTextures();
     };
 }

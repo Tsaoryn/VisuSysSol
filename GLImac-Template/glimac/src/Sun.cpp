@@ -18,10 +18,9 @@ namespace glimac{
         const GLuint VERTEX_ATTR_TEX_SHADER = 2;
         
         /*vbo*/
-        GLuint vbo;
-        glGenBuffers(1, &vbo);
+        glGenBuffers(1, &_vbo);
         
-        glBindBuffer(GL_ARRAY_BUFFER, vbo);
+        glBindBuffer(GL_ARRAY_BUFFER, _vbo);
         const ShapeVertex * vertices = _sphere.getDataPointer();
         
         glBufferData(GL_ARRAY_BUFFER, nb_floats*sizeof(GLfloat), vertices, GL_STATIC_DRAW);
@@ -29,14 +28,13 @@ namespace glimac{
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         
         /*vao*/
-        GLuint vao;
-        glGenVertexArrays(1, &vao);
+        glGenVertexArrays(1, &_vao);
         
-        glBindVertexArray(vao);
+        glBindVertexArray(_vao);
         glEnableVertexAttribArray(VERTEX_ATTR_POSITION_SHADER);
         glEnableVertexAttribArray(VERTEX_ATTR_NORMAL_SHADER);
         glEnableVertexAttribArray(VERTEX_ATTR_TEX_SHADER);
-        glBindBuffer(GL_ARRAY_BUFFER, vbo);
+        glBindBuffer(GL_ARRAY_BUFFER, _vbo);
         
         glVertexAttribPointer(VERTEX_ATTR_POSITION_SHADER, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) 0);
         glVertexAttribPointer(VERTEX_ATTR_NORMAL_SHADER, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) (3*sizeof(GLfloat)));
@@ -49,9 +47,11 @@ namespace glimac{
     }
     
     void Sun::initPlanets(PlanetProgram programPlanet, MoonProgram programMoon){
-        //don't forget to change the absolute path when you change your installation
+        //don't forget to change subPath when you change your installation
         std::list<Moon> moons = {};
-        std::string pathMoon = "/home/karim/Bureau/karim/VisuSysSol/VisuSysSol/GLImac-Template/assets/textures/MoonMap.jpg";
+        std:string subPath = "/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/GLImac-Template";
+        
+        std::string pathMoon = subPath+"/assets/textures/MoonMap.jpg";
         Moon moon = {"Moon",pathMoon,384400.0f+0.0549f,3475.0f,5.145f,programMoon};
         Moon Phobos = {"Phobos",pathMoon,9378.0f+0.0151f,22.5f,1.08f,programMoon};
         Moon Demios = {"Demios",pathMoon,23459.0f+0.0005f,12.0f,1.79f,programMoon};
@@ -76,20 +76,20 @@ namespace glimac{
         Moon Nereid = {"Nereid",pathMoon,5513400.0f+0.7512,340.0f,7.23f,programMoon};
         Moon Charon = {"Charon",pathMoon,19591.0f+0.0f,1212.0f,0.00005f,programMoon};
                 
-        Planet Mercury = {"/home/karim/Bureau/karim/VisuSysSol/VisuSysSol/GLImac-Template/assets/textures/MercuryMap.jpg", "", moons, false,69800000.0f/46000000.0f, 4879.0f, 88.0f, 4222.6f,7.0f,programPlanet};
-        Planet Venus = {"/home/karim/Bureau/karim/VisuSysSol/VisuSysSol/GLImac-Template/assets/textures/VenusMap.jpg", "", moons, false,108900000.0f/107500000.0f, 12104.0f, 224.7f, 2802.0f,3.4f,programPlanet};
+        Planet Mercury = {subPath+"/assets/textures/MercuryMap.jpg", "", moons, false, false,69800000.0f/46000000.0f, 4879.0f, 88.0f, 4222.6f,7.0f,programPlanet};
+        Planet Venus = {subPath+"/assets/textures/VenusMap.jpg", "", moons, false, false,108900000.0f/107500000.0f, 12104.0f, 224.7f, 2802.0f,3.4f,programPlanet};
         moons.push_back(moon);
-        Planet Earth = {"/home/karim/Bureau/karim/VisuSysSol/VisuSysSol/GLImac-Template/assets/textures/EarthMap.jpg", "/home/karim/Bureau/karim/VisuSysSol/VisuSysSol/GLImac-Template/assets/textures/CloudMap", moons, true,152100000.0f/147100000.0f, 12756.0f, 365.2f,24.0f,0.0f,programPlanet};
+        Planet Earth = {subPath+"/assets/textures/EarthMap.jpg", subPath+"/assets/textures/CloudMap", moons, true, false,152100000.0f/147100000.0f, 12756.0f, 365.2f,24.0f,0.0f,programPlanet};
         moons.clear();
         moons.push_back(Phobos);
         moons.push_back(Demios);
-        Planet Mars = {"/home/karim/Bureau/karim/VisuSysSol/VisuSysSol/GLImac-Template/assets/textures/MarsMap.jpg", "", moons, false, 249200000.0f/206600000.0f, 6792.0f, 687.0f,24.7f,1.9f,programPlanet };
+        Planet Mars = {subPath+"/assets/textures/MarsMap.jpg", "", moons, false, false,249200000.0f/206600000.0f, 6792.0f, 687.0f,24.7f,1.9f,programPlanet };
         moons.clear();
         moons.push_back(Callisto);
         moons.push_back(Ganymede);
         moons.push_back(Europa);
         moons.push_back(Io);
-        Planet Jupiter = {"/home/karim/Bureau/karim/VisuSysSol/VisuSysSol/GLImac-Template/assets/textures/JupiterMap.jpg", "", moons, false,816600000.0f/740500000.0f, 142984.0f,4331.0f,9.9f,1.3f,programPlanet };
+        Planet Jupiter = {subPath+"/assets/textures/JupiterMap.jpg", "", moons, false, false,816600000.0f/740500000.0f, 142984.0f,4331.0f,9.9f,1.3f,programPlanet };
         moons.clear();
         moons.push_back(Mimas);
         moons.push_back(Enceladus);
@@ -99,21 +99,21 @@ namespace glimac{
         moons.push_back(Titan);
         moons.push_back(Hyperion);
         moons.push_back(Iapetus);
-        Planet Saturn = {"/home/karim/Bureau/karim/VisuSysSol/VisuSysSol/GLImac-Template/assets/textures/SaturnMap.jpg", "/home/karim/Bureau/karim/VisuSysSol/VisuSysSol/GLImac-Template/assets/textures/saturnringcolor.jpg", moons, true,  1514500000.0f/1352600000.0f, 120536.0f, 10747.0f,10.7f,2.5f,programPlanet };
+        Planet Saturn = {subPath+"/assets/textures/SaturnMap.jpg", subPath+"/assets/textures/saturnringcolor.jpg", moons, true, true, 1514500000.0f/1352600000.0f, 120536.0f, 10747.0f,10.7f,2.5f,programPlanet };
         moons.clear();
         moons.push_back(Ariel);
         moons.push_back(Umbriel);
         moons.push_back(Titania);
         moons.push_back(Oberon);
         moons.push_back(Miranda);
-        Planet Uranus = {"/home/karim/Bureau/karim/VisuSysSol/VisuSysSol/GLImac-Template/assets/textures/UranusMap.jpg", "/home/karim/Bureau/karim/VisuSysSol/VisuSysSol/GLImac-Template/assets/textures/uranusringcolor.jpg", moons, true,3003600000.0f/2741300000.0f, 51118.0f, 30589.0f,17.2f, 0.8f,programPlanet };
+        Planet Uranus = {subPath+"/assets/textures/UranusMap.jpg", subPath+"/assets/textures/uranusringcolor.jpg", moons, true, true,3003600000.0f/2741300000.0f, 51118.0f, 30589.0f,17.2f, 0.8f,programPlanet };
         moons.clear();
         moons.push_back(Triton);
         moons.push_back(Nereid);
-        Planet Neptune = {"/home/karim/Bureau/karim/VisuSysSol/VisuSysSol/GLImac-Template/assets/textures/NeptuneMap.jpg", "", moons, false,4545700000.0f/4444500000.0f, 49528.0f, 59800.0f,16.1f,1.8f,programPlanet };
+        Planet Neptune = {subPath+"/assets/textures/NeptuneMap.jpg", "", moons, false, false,4545700000.0f/4444500000.0f, 49528.0f, 59800.0f,16.1f,1.8f,programPlanet };
         moons.clear();
         moons.push_back(Charon);
-        Planet Pluto = {"/home/karim/Bureau/karim/VisuSysSol/VisuSysSol/GLImac-Template/assets/textures/PlutoMap.jpg", "", moons, false,7375900000.0f /4436800000.0f, 2370.0f, 90560.0f,153.3f,17.2f,programPlanet };
+        Planet Pluto = {subPath+"/assets/textures/PlutoMap.jpg", "", moons, false, false,7375900000.0f /4436800000.0f, 2370.0f, 90560.0f,153.3f,17.2f,programPlanet };
 		
 		_planets.insert( std::pair<std::string,Planet>("Mercury",Mercury) );
 		_planets.insert( std::pair<std::string,Planet>("Venus",Venus) );
@@ -125,5 +125,35 @@ namespace glimac{
 		_planets.insert( std::pair<std::string,Planet>("Neptune",Neptune) );
 		_planets.insert( std::pair<std::string,Planet>("Pluto",Pluto) );
 		
+    }
+
+    void Sun::drawSystem(){
+        //bind
+        glBindTexture(GL_TEXTURE_2D,_textureSun);
+        _programSun.m_Program.use();
+        glUniform1i(_programSun.uTexture, 1);
+        glBindVertexArray(_vao);
+        /*to do camera*/
+        glm::mat4 viewMatrix = glm::mat4(1.0f);
+    
+        glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f)* viewMatrix;
+        glm::mat4 MVMatrix = glm::translate(glm::mat4(1.0f),glm::vec3(0,0,0)) * viewMatrix;
+        glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix)) * viewMatrix;
+        glm::mat4 MVPMatrix = ProjMatrix * MVMatrix;
+    
+        glUniformMatrix4fv(_programSun.uMVPMatrix,1,GL_FALSE,glm::value_ptr(MVPMatrix));
+        glUniformMatrix4fv(_programSun.uMVMatrix,1,GL_FALSE,glm::value_ptr(MVMatrix));
+        glUniformMatrix4fv(_programSun.uNormalMatrix,1,GL_FALSE,glm::value_ptr(NormalMatrix));
+    
+        
+        glDrawArrays(GL_TRIANGLES, 0, 8*_sphere.getVertexCount());
+        glBindVertexArray(0);
+    }
+    
+    void Sun::deleteTextures(){
+        glDeleteTextures(1,&_textureSun);
+        for(map<string, Planet>::iterator it = _planets.begin(); it!=_planets.end(); ++it){
+            (it->second).deleteTextures();
+        }
     }
 }
