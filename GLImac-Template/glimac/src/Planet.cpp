@@ -19,6 +19,10 @@ namespace glimac{
         glBindTexture(GL_TEXTURE_2D, 0);
     }
     
+    void Planet::drawPlanet(float sunDiameter, float sunRotation){
+    
+    }
+    
     void Planet::deleteTextures(){
         glDeleteTextures(1,&_texturePlanet);
         if(_extra)

@@ -41,6 +41,7 @@ namespace glimac {
                 }
             }
             
+            void drawPlanet(float sunDiameter, float sunRotation);
             void deleteTextures();
     };
 }

@@ -33,7 +33,7 @@ namespace glimac {
                 this->initPlanets(path);
             }
             
-            void drawSystem();
+            void drawSystem(float t);
             void deleteTextures();
     };
 }

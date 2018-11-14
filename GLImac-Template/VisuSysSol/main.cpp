@@ -50,11 +50,11 @@ int main(int argc, char** argv) {
          
         /***************************************************************************************/ 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        sun.drawSystem();
+        sun.drawSystem(windowManager.getTime());
         // Update the display
         windowManager.swapBuffers();
     }
     
-    //sun.deleteTextures();
+    sun.deleteTextures();
     return EXIT_SUCCESS;
 }
