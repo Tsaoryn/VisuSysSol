@@ -29,6 +29,7 @@ namespace glimac {
             }
             
             std::string getName();
+            void drawMoon();
             void deleteTextures();
     };
 }

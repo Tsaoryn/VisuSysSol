@@ -76,55 +76,54 @@ namespace glimac{
         Moon Nereid = {path,"Nereid",pathMoon,5513400.0f+0.7512,340.0f,7.23f};
         Moon Charon = {path,"Charon",pathMoon,19591.0f+0.0f,1212.0f,0.00005f};
                 
-        Planet Mercury = {path,subPath+"/assets/textures/MercuryMap.jpg", "", moons, false, false,69800000.0f/46000000.0f, 4879.0f, 88.0f, 4222.6f,7.0f};
-        Planet Venus = {path,subPath+"/assets/textures/VenusMap.jpg", "", moons, false, false,108900000.0f/107500000.0f, 12104.0f, 224.7f, 2802.0f,3.4f};
-        moons.push_back(moon);
-        Planet Earth = {path,subPath+"/assets/textures/EarthMap.jpg", subPath+"/assets/textures/CloudMap.jpg", moons, true, false,152100000.0f/147100000.0f, 12756.0f, 365.2f,24.0f,0.0f};
+        Planet Mercury = {path,subPath+"/assets/textures/MercuryMap.jpg", "", moons, false, false,69800000.0f,46000000.0f, 4879.0f, 88.0f, 4222.6f,7.0f};
+        Planet Venus = {path,subPath+"/assets/textures/VenusMap.jpg", "", moons, false, false,108900000.0f,107500000.0f, 12104.0f, 224.7f, 2802.0f,3.4f};
+        moons.push_back(&moon);
+        Planet Earth = {path,subPath+"/assets/textures/EarthMap.jpg", subPath+"/assets/textures/CloudMap.jpg", moons, true, false,152100000.0f,147100000.0f, 12756.0f, 365.2f,24.0f,0.0f};
         moons.clear();
-        moons.push_back(Phobos);
-        moons.push_back(Demios);
-        Planet Mars = {path,subPath+"/assets/textures/MarsMap.jpg", "", moons, false, false,249200000.0f/206600000.0f, 6792.0f, 687.0f,24.7f,1.9f };
+        moons.push_back(&Phobos);
+        moons.push_back(&Demios);
+        Planet Mars = {path,subPath+"/assets/textures/MarsMap.jpg", "", moons, false, false,249200000.0f,206600000.0f, 6792.0f, 687.0f,24.7f,1.9f };
         moons.clear();
-        moons.push_back(Callisto);
-        moons.push_back(Ganymede);
-        moons.push_back(Europa);
-        moons.push_back(Io);
-        Planet Jupiter = {path,subPath+"/assets/textures/JupiterMap.jpg", "", moons, false, false,816600000.0f/740500000.0f, 142984.0f,4331.0f,9.9f,1.3f };
+        moons.push_back(&Callisto);
+        moons.push_back(&Ganymede);
+        moons.push_back(&Europa);
+        moons.push_back(&Io);
+        Planet Jupiter = {path,subPath+"/assets/textures/JupiterMap.jpg", "", moons, false, false,816600000.0f,740500000.0f, 142984.0f,4331.0f,9.9f,1.3f };
         moons.clear();
-        moons.push_back(Mimas);
-        moons.push_back(Enceladus);
-        moons.push_back(Tethys);
-        moons.push_back(Dione);
-        moons.push_back(Rhea);
-        moons.push_back(Titan);
-        moons.push_back(Hyperion);
-        moons.push_back(Iapetus);
-        Planet Saturn = {path,subPath+"/assets/textures/SaturnMap.jpg", subPath+"/assets/textures/saturnringcolour.jpg", moons, true, true, 1514500000.0f/1352600000.0f, 120536.0f, 10747.0f,10.7f,2.5f };
+        moons.push_back(&Mimas);
+        moons.push_back(&Enceladus);
+        moons.push_back(&Tethys);
+        moons.push_back(&Dione);
+        moons.push_back(&Rhea);
+        moons.push_back(&Titan);
+        moons.push_back(&Hyperion);
+        moons.push_back(&Iapetus);
+        Planet Saturn = {path,subPath+"/assets/textures/SaturnMap.jpg", subPath+"/assets/textures/saturnringcolour.jpg", moons, true, true, 1514500000.0f,1352600000.0f, 120536.0f, 10747.0f,10.7f,2.5f };
         moons.clear();
-        moons.push_back(Ariel);
-        moons.push_back(Umbriel);
-        moons.push_back(Titania);
-        moons.push_back(Oberon);
-        moons.push_back(Miranda);
-        Planet Uranus = {path,subPath+"/assets/textures/UranusMap.jpg", subPath+"/assets/textures/uranusringcolour.jpg", moons, true, true,3003600000.0f/2741300000.0f, 51118.0f, 30589.0f,17.2f, 0.8f };
+        moons.push_back(&Ariel);
+        moons.push_back(&Umbriel);
+        moons.push_back(&Titania);
+        moons.push_back(&Oberon);
+        moons.push_back(&Miranda);
+        Planet Uranus = {path,subPath+"/assets/textures/UranusMap.jpg", subPath+"/assets/textures/uranusringcolour.jpg", moons, true, true,3003600000.0f,2741300000.0f, 51118.0f, 30589.0f,17.2f, 0.8f };
         moons.clear();
-        moons.push_back(Triton);
-        moons.push_back(Nereid);
-        Planet Neptune = {path,subPath+"/assets/textures/NeptuneMap.jpg", "", moons, false, false,4545700000.0f/4444500000.0f, 49528.0f, 59800.0f,16.1f,1.8f };
+        moons.push_back(&Triton);
+        moons.push_back(&Nereid);
+        Planet Neptune = {path,subPath+"/assets/textures/NeptuneMap.jpg", "", moons, false, false,4545700000.0f,4444500000.0f, 49528.0f, 59800.0f,16.1f,1.8f };
         moons.clear();
-        moons.push_back(Charon);
-        Planet Pluto = {path,subPath+"/assets/textures/PlutoMap.jpg", "", moons, false, false,7375900000.0f /4436800000.0f, 2370.0f, 90560.0f,153.3f,17.2f };
-		
-        _planets.push_back(Mercury);
-        _planets.push_back(Venus);
-        _planets.push_back(Earth);
-        _planets.push_back(Mars);
-        _planets.push_back(Jupiter);
-        _planets.push_back(Saturn);
-        _planets.push_back(Uranus);
-        _planets.push_back(Neptune);
-        _planets.push_back(Pluto);
-		
+        moons.push_back(&Charon);
+        Planet Pluto = {path,subPath+"/assets/textures/PlutoMap.jpg", "", moons, false, false,7375900000.0f,4436800000.0f, 2370.0f, 90560.0f,153.3f,17.2f };
+        
+        _planets.push_back(&Mercury);
+        _planets.push_back(&Venus);
+        _planets.push_back(&Earth);
+        _planets.push_back(&Mars);
+        _planets.push_back(&Jupiter);
+        _planets.push_back(&Saturn);
+        _planets.push_back(&Uranus);
+        _planets.push_back(&Neptune);
+        _planets.push_back(&Pluto);
     }
 
     void Sun::drawSystem(float t){
@@ -138,7 +137,7 @@ namespace glimac{
     
         glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f)* viewMatrix;
         glm::mat4 MVMatrix = glm::translate(glm::mat4(1.0f),glm::vec3(0,0,-5)) * viewMatrix;
-         MVMatrix = glm::rotate(MVMatrix, t/1.0f, glm::vec3(0, 1, 0));
+        MVMatrix = glm::rotate(MVMatrix, t/1.0f, glm::vec3(0, 1, 0));
         glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix)) * viewMatrix;
         glm::mat4 MVPMatrix = ProjMatrix * MVMatrix;
     
@@ -150,17 +149,17 @@ namespace glimac{
         glBindVertexArray(0);
         
         int num = 1;
-        for(Planet & planet : _planets){
-            //the sun's diameter and the rotation are using has references
-            planet.drawPlanet(_diameter,_rotation);
+        for (Planet * planet : _planets) {
+            planet->drawPlanet(_diameter,_rotation, _sphere.getVertexCount(),1.0f);
             num++;
         }
+        
     }
     
     void Sun::deleteTextures(){
         glDeleteTextures(1,&_textureSun);
-        for(Planet & planet : _planets){
-            planet.deleteTextures();
+        for(Planet * planet : _planets){
+            planet->deleteTextures();
         }
     }
 }

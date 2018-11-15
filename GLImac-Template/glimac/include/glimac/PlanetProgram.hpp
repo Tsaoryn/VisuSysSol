@@ -17,7 +17,7 @@ namespace glimac {
             
             PlanetProgram(const FilePath& applicationPath):
             m_Program(loadProgram(applicationPath.dirPath() + "/shaders/3D.vs.glsl",
-                                  applicationPath.dirPath() + "/shaders/tex3D.fs.glsl")) {
+                                  applicationPath.dirPath() + "/shaders/multiTex3D.fs.glsl")) {
             uMVPMatrix = glGetUniformLocation(m_Program.getGLId(), "uMVPMatrix");
             uMVMatrix = glGetUniformLocation(m_Program.getGLId(), "uMVMatrix");
             uNormalMatrix = glGetUniformLocation(m_Program.getGLId(), "uNormalMatrix");
