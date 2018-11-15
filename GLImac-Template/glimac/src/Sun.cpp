@@ -1,12 +1,13 @@
 #include "glimac/Sun.hpp"
 
 namespace glimac{
+
     void Sun::initTexture(){
         glGenTextures(1,&_textureSun);
         glBindTexture(GL_TEXTURE_2D, _textureSun);
-        glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,_imgSun->getWidth(),_imgSun->getHeight(),0,GL_RGBA,GL_FLOAT,_imgSun->getPixels());
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+            glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,_imgSun->getWidth(),_imgSun->getHeight(),0,GL_RGBA,GL_FLOAT,_imgSun->getPixels());
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glBindTexture(GL_TEXTURE_2D, 0);
     }
     
@@ -21,34 +22,30 @@ namespace glimac{
         glGenBuffers(1, &_vbo);
         
         glBindBuffer(GL_ARRAY_BUFFER, _vbo);
-        const ShapeVertex * vertices = _sphere.getDataPointer();
-        
-        glBufferData(GL_ARRAY_BUFFER, nb_floats*sizeof(GLfloat), vertices, GL_STATIC_DRAW);
-        //débind
+            const ShapeVertex * vertices = _sphere.getDataPointer();
+            glBufferData(GL_ARRAY_BUFFER, nb_floats*sizeof(GLfloat), vertices, GL_STATIC_DRAW);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         
         /*vao*/
         glGenVertexArrays(1, &_vao);
         
         glBindVertexArray(_vao);
-        glEnableVertexAttribArray(VERTEX_ATTR_POSITION_SHADER);
-        glEnableVertexAttribArray(VERTEX_ATTR_NORMAL_SHADER);
-        glEnableVertexAttribArray(VERTEX_ATTR_TEX_SHADER);
-        glBindBuffer(GL_ARRAY_BUFFER, _vbo);
-        
-        glVertexAttribPointer(VERTEX_ATTR_POSITION_SHADER, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) 0);
-        glVertexAttribPointer(VERTEX_ATTR_NORMAL_SHADER, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) (3*sizeof(GLfloat)));
-        glVertexAttribPointer(VERTEX_ATTR_TEX_SHADER, 2, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) (6*sizeof(GLfloat)));
-        
+            glEnableVertexAttribArray(VERTEX_ATTR_POSITION_SHADER);
+            glEnableVertexAttribArray(VERTEX_ATTR_NORMAL_SHADER);
+            glEnableVertexAttribArray(VERTEX_ATTR_TEX_SHADER);
+            glBindBuffer(GL_ARRAY_BUFFER, _vbo);
+                glVertexAttribPointer(VERTEX_ATTR_POSITION_SHADER, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) 0);
+                glVertexAttribPointer(VERTEX_ATTR_NORMAL_SHADER, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) (3*sizeof(GLfloat)));
+                glVertexAttribPointer(VERTEX_ATTR_TEX_SHADER, 2, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) (6*sizeof(GLfloat)));
         //débind
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
+            glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
         glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);//GL_FILL
     }
     
     void Sun::initPlanets(char* path){
         //don't forget to change subPath when you change your installation
-        std::list<Moon> moons = {};
+        std::list<Moon*> moons = {};
         std:string subPath = "/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/GLImac-Template";
         
         std::string pathMoon = subPath+"/assets/textures/MoonMap.jpg";

@@ -5,6 +5,7 @@ using namespace std;
 
 namespace glimac {
     class MoonProgram{
+
         public:
             Program m_Program;
             GLint uMVPMatrix;
@@ -15,12 +16,12 @@ namespace glimac {
             MoonProgram(){}
             
             MoonProgram(const FilePath& applicationPath):
-            m_Program(loadProgram(applicationPath.dirPath() + "/shaders/3D.vs.glsl",
+            	m_Program(loadProgram(applicationPath.dirPath() + "/shaders/3D.vs.glsl",
                                   applicationPath.dirPath() + "/shaders/tex3D.fs.glsl")) {
-            uMVPMatrix = glGetUniformLocation(m_Program.getGLId(), "uMVPMatrix");
-            uMVMatrix = glGetUniformLocation(m_Program.getGLId(), "uMVMatrix");
-            uNormalMatrix = glGetUniformLocation(m_Program.getGLId(), "uNormalMatrix");
-            uMoonTexture = glGetUniformLocation(m_Program.getGLId(), "uTexture");
-        }
+            		uMVPMatrix = glGetUniformLocation(m_Program.getGLId(), "uMVPMatrix");
+            		uMVMatrix = glGetUniformLocation(m_Program.getGLId(), "uMVMatrix");
+            		uNormalMatrix = glGetUniformLocation(m_Program.getGLId(), "uNormalMatrix");
+            		uMoonTexture = glGetUniformLocation(m_Program.getGLId(), "uTexture");
+       			}
     };
 }
