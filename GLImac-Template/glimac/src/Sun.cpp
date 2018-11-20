@@ -37,10 +37,9 @@ namespace glimac{
                 glVertexAttribPointer(VERTEX_ATTR_POSITION_SHADER, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) 0);
                 glVertexAttribPointer(VERTEX_ATTR_NORMAL_SHADER, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) (3*sizeof(GLfloat)));
                 glVertexAttribPointer(VERTEX_ATTR_TEX_SHADER, 2, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) (6*sizeof(GLfloat)));
-        //débind
             glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
-        glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);//GL_FILL
+        glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
     }
     
     void Sun::initPlanets(char* path){
@@ -49,29 +48,29 @@ namespace glimac{
         std:string subPath = "/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/GLImac-Template";
         
         std::string pathMoon = subPath+"/assets/textures/MoonMap.jpg";
-        Moon moon = {path,"Moon",pathMoon,384400.0f+0.0549f,3475.0f,5.145f};
-        Moon Phobos = {path,"Phobos",pathMoon,9378.0f+0.0151f,22.5f,1.08f};
-        Moon Demios = {path,"Demios",pathMoon,23459.0f+0.0005f,12.0f,1.79f};
-        Moon Callisto = {path,"Callisto",pathMoon,1882710.0f+0.007f,4821.0f,0.19f};
-        Moon Ganymede = {path,"Ganymede",pathMoon,1070410.0f+0.001f,5262.0f,0.18f};
-        Moon Europa = {path,"Europa",pathMoon,671030.0f+0.009f,3122.0f,0.47f};
-        Moon Io = {path,"Io",pathMoon,421700.0f+0.004f,3643.0f,0.04f};
-        Moon Mimas = {path,"Mimas",pathMoon,185520.0f+0.0202f,392.0f,1.53f};
-        Moon Enceladus = {path,"Enceladus",pathMoon,238020.f+0.0045f,498.0f,0.0f};
-        Moon Tethys = {path,"Tethys",pathMoon,294660.0f+0.0f,1060.0f,1.86f};
-        Moon Dione = {path,"Dione",pathMoon,377400.0f+0.0022f,1120.0f,0.02f};
-        Moon Rhea = {path,"Rhea",pathMoon,527040.0f+0.0010f,1530.0f,0.35f};
-        Moon Titan = {path,"Titan",pathMoon,1221830.0f+0.0292f,5150.0f,0.33f};
-        Moon Hyperion = {path,"Hyperion",pathMoon,1481100.0f+0.1042f,286.0f,0.43f};
-        Moon Iapetus = {path,"Iapetus",pathMoon,3561300.0f+0.0283f,1460.0f,14.72f};
-        Moon Ariel = {path,"Ariel",pathMoon,199900.0f+0.0012f,1158.0f,0.04f};
-        Moon Umbriel = {path,"Umbriel",pathMoon,266000.0f+0.0039f,1169.0f,0.13f};
-        Moon Titania = {path,"Titania",pathMoon,436300.0f+0.0011f,1577.0f,0.08};
-        Moon Oberon = {path,"Oberon",pathMoon,583500.0f+0.0014,1523.0f,0.07f};
-        Moon Miranda = {path,"Miranda",pathMoon,129900.0f+0.0013,472.0f,4.34f};
-        Moon Triton = {path,"Triton",pathMoon,354760.0f+0.000016f,2707.0f,157.345f};
-        Moon Nereid = {path,"Nereid",pathMoon,5513400.0f+0.7512,340.0f,7.23f};
-        Moon Charon = {path,"Charon",pathMoon,19591.0f+0.0f,1212.0f,0.00005f};
+        Moon moon = {path,"Moon",pathMoon};
+        Moon Phobos = {path,"Phobos",pathMoon};
+        Moon Demios = {path,"Demios",pathMoon};
+        Moon Callisto = {path,"Callisto",pathMoon};
+        Moon Ganymede = {path,"Ganymede",pathMoon};
+        Moon Europa = {path,"Europa",pathMoon};
+        Moon Io = {path,"Io",pathMoon};
+        Moon Mimas = {path,"Mimas",pathMoon};
+        Moon Enceladus = {path,"Enceladus",pathMoon};
+        Moon Tethys = {path,"Tethys",pathMoon};
+        Moon Dione = {path,"Dione",pathMoon};
+        Moon Rhea = {path,"Rhea",pathMoon};
+        Moon Titan = {path,"Titan",pathMoonf};
+        Moon Hyperion = {path,"Hyperion",pathMoon};
+        Moon Iapetus = {path,"Iapetus",pathMoon};
+        Moon Ariel = {path,"Ariel",pathMoon};
+        Moon Umbriel = {path,"Umbriel",pathMoon};
+        Moon Titania = {path,"Titania",pathMoon};
+        Moon Oberon = {path,"Oberon",pathMoon};
+        Moon Miranda = {path,"Miranda",pathMoon};
+        Moon Triton = {path,"Triton",pathMoon};
+        Moon Nereid = {path,"Nereid",pathMoon};
+        Moon Charon = {path,"Charon",pathMoon};
                 
         Planet Mercury = {path,subPath+"/assets/textures/MercuryMap.jpg", "", moons, false, false,69800000.0f,46000000.0f, 4879.0f, 88.0f, 4222.6f,7.0f};
         Planet Venus = {path,subPath+"/assets/textures/VenusMap.jpg", "", moons, false, false,108900000.0f,107500000.0f, 12104.0f, 224.7f, 2802.0f,3.4f};

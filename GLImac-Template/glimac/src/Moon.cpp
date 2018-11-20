@@ -2,6 +2,20 @@
 
 namespace glimac{
 
+    void Moon:initMoon(std::string name){
+        list<std::string> lines = {};
+        readFileArray("Satellites.txt", &lines);
+        std::list<std::array<string,5>> list = splitInArray(lines);
+
+        for(std::array tab : list)
+            if(tab[0] == name){
+                _ellipse = stof(tab[1])+stof(tab[2]);
+                _diameter = stof(tab[3]);
+                _inclination = stof(tab[4]);
+                break;
+            }
+    }
+
     void Moon::initTexture(){
         glGenTextures(1,&_textureMoon);
         glBindTexture(GL_TEXTURE_2D, _textureMoon);

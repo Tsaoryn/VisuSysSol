@@ -1,5 +1,6 @@
 #pragma once
 #include "MoonProgram.hpp"
+#include "Parseur.hpp"
 #include <glimac/Image.hpp>
 
 using namespace std;
@@ -18,11 +19,14 @@ namespace glimac {
             float _inclination;
             
             void initTexture();
+            void initMoon(std::string name);
 
         public:
             Moon(){}
             Moon(Moon const&){}
-            Moon(char* path, std::string name, std::string pathImg, float ellipse, float diameter, float inclination): _name(name), _ellipse(ellipse), _diameter(diameter), _inclination(inclination){
+            Moon(char* path, std::string name, std::string pathImg) : _name(name){
+                initMoon(name);
+
                 FilePath applicationPath(path);
                 _programMoon = {applicationPath};
                 _imgMoon = loadImage(pathImg);
