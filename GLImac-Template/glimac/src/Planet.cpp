@@ -2,6 +2,32 @@
 
 namespace glimac{
 
+    void Planet::initPlanet(std::string name){
+        list<std::array<string,9>> list = splitPlanet();
+
+        for(std::array<string,9> tab : list)
+            if(tab[0] == name){
+                istringstream(tab[1]) >> std::boolalpha >> _extra ;
+                istringstream(tab[2]) >> std::boolalpha >> _rings ;
+                _aphelion = stof(tab[3]);
+                _perihelion = stof(tab[4]);
+                _diameter = stof(tab[5]);
+                _orbitalPeriod = stof(tab[6]);
+                _lengthDays = stof(tab[7]);
+                _orbitalInclination = stof(tab[8]);
+                break;
+            }
+    }
+
+    void Planet::initMoonList(std::string name, char* path){
+        list<string> list = splitMoonPlanet(name);
+
+        for(string s : list){
+            Moon m = Moon(path, s);
+            _moons.push_back(&m);
+        }
+    }
+
     void Planet::initTexture(){
         glGenTextures(1,&_texturePlanet);
         glBindTexture(GL_TEXTURE_2D, _texturePlanet);

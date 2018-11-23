@@ -1,6 +1,7 @@
 #pragma once
 #include "Moon.hpp"
 #include "PlanetProgram.hpp"
+#include "Parseur.hpp"
 #include <list>
 
 namespace glimac {
@@ -12,7 +13,8 @@ namespace glimac {
             std::unique_ptr<Image> _imgPlanet;
             std::unique_ptr<Image> _imgExtra;
             std::list<Moon*> _moons;
-            
+
+            std::string _name;
             bool _extra;
             bool _rings;
             float _aphelion;
@@ -24,12 +26,16 @@ namespace glimac {
             
             void initTexture();
             void initTextureExtra();
+            void initPlanet(std::string name);
+            void initMoonList(string name, char* path);
 
         public:
           	Planet(){}
           	Planet(Planet const&){}
-            Planet(char* path, std::string pathImg, std::string pathImg2, std::list<Moon*> moons, bool extra, bool rings, float aphelion, float perihelion, float diameter, float orbitalPeriod, float lengthDays, float orbitalInclination):
-            _moons(moons),_aphelion(aphelion), _perihelion(perihelion), _extra(extra), _rings(rings), _diameter(diameter), _orbitalPeriod(orbitalPeriod), _lengthDays(lengthDays), _orbitalInclination(orbitalInclination){
+            Planet(std::string name, char* path, std::string pathImg, std::string pathImg2) : _name(name){
+                initPlanet(name);
+                initMoonList(name, path);
+
                 FilePath applicationPath(path);
                 _programPlanet = {applicationPath};
                 _imgPlanet = loadImage(pathImg);
