@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=c++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/include/SDL -I/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/GLImac-Template/glimac/include -I/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/GLImac-Template/third-party/include 
+CXX_INCLUDES = -I/usr/include/SDL -I/home/2ins2/nhipolit/Documents/3D/VisuSysSol/GLImac-Template/glimac/include -I/home/2ins2/nhipolit/Documents/3D/VisuSysSol/GLImac-Template/third-party/include 
 
