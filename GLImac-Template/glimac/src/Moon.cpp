@@ -1,7 +1,7 @@
 #include "glimac/Moon.hpp"
 
 namespace glimac{
-
+    /*
     void Moon::initMoon(std::string name){
         list<std::array<string,5>> list = splitMoon();
 
@@ -12,7 +12,7 @@ namespace glimac{
                 _inclination = stof(tab[4]);
                 break;
             }
-    }
+    }*/
 
     void Moon::initTexture(){
         glGenTextures(1,&_textureMoon);

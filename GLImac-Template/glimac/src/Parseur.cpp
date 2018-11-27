@@ -3,6 +3,7 @@
 
 namespace glimac{
 
+    
     extern list<std::string> readFileList(const char* filename){
         list<std::string> lines = {};
 
@@ -14,7 +15,7 @@ namespace glimac{
 
         return lines;
     }
-
+    /*
     extern std::list<std::array<string,5>> splitMoon(){
         list<std::string> lines = readFileList("../../assets/ressources/Satellites.txt");
 
@@ -60,6 +61,7 @@ namespace glimac{
 
         return array ;
     }
+    */
 
     extern std::list<std::string> splitMoonPlanet(string name){
         list<std::string> lines = readFileList("../../assets/ressources/SatPlanets.txt");
@@ -75,10 +77,6 @@ namespace glimac{
                 s = tmp.substr(0, pos);
                 line.push_back(s);
                 tmp.erase(0, pos + delimiter.length());
-            }
-
-            for(string str : line){
-                std::cout << str << std::endl;
             }
 
             list<string>::iterator it;

@@ -44,41 +44,43 @@ namespace glimac{
     
     void Sun::initPlanets(char* path){
         //don't forget to change subPath when you change your installation
-        std:string subPath = "/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/GLImac-Template";
-        /*
-        Moon moon = {path,"Moon"};
-        Moon Phobos = {path,"Phobos"};
-        Moon Demios = {path,"Demios"};
-        Moon Callisto = {path,"Callisto"};
-        Moon Ganymede = {path,"Ganymede"};
-        Moon Europa = {path,"Europa"};
-        Moon Io = {path,"Io"};
-        Moon Mimas = {path,"Mimas"};
-        Moon Enceladus = {path,"Enceladus"};
-        Moon Tethys = {path,"Tethys"};
-        Moon Dione = {path,"Dione"};
-        Moon Rhea = {path,"Rhea"};
-        Moon Titan = {path,"Titan"};
-        Moon Hyperion = {path,"Hyperion"};
-        Moon Iapetus = {path,"Iapetus"};
-        Moon Ariel = {path,"Ariel"};
-        Moon Umbriel = {path,"Umbriel"};
-        Moon Titania = {path,"Titania"};
-        Moon Oberon = {path,"Oberon"};
-        Moon Miranda = {path,"Miranda"};
-        Moon Triton = {path,"Triton"};
-        Moon Nereid = {path,"Nereid"};
-        Moon Charon = {path,"Charon"};*/
+        //std:string subPath = "/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/GLImac-Template";
+        std:string subPath = "/home/2ins2/nhipolit/Documents/3D/VisuSysSol/GLImac-Template";
 
-        Planet Mercury = {"Mercury", path, subPath+"/assets/textures/MercuryMap.jpg", ""};
-        Planet Venus = {"Venus", path, subPath+"/assets/textures/VenusMap.jpg", ""};
-        Planet Earth = {"Earth", path,subPath+"/assets/textures/EarthMap.jpg", subPath+"/assets/textures/CloudMap.jpg"};
-        Planet Mars = {"Mars", path,subPath+"/assets/textures/MarsMap.jpg", ""};
-        Planet Jupiter = {"Jupiter", path,subPath+"/assets/textures/JupiterMap.jpg", ""};
-        Planet Saturn = {"Saturn", path,subPath+"/assets/textures/SaturnMap.jpg", subPath+"/assets/textures/saturnringcolour.jpg"};
-        Planet Uranus = {"Uranus", path,subPath+"/assets/textures/UranusMap.jpg", subPath+"/assets/textures/uranusringcolour.jpg"};
-        Planet Neptune = {"Neptune", path,subPath+"/assets/textures/NeptuneMap.jpg", ""};
-        Planet Pluto = {"Pluto", path,subPath+"/assets/textures/PlutoMap.jpg", ""};
+        
+        Moon moon = {path,"Moon", 384400.+0.0549, 3475., 5.145};
+        Moon Phobos = {path,"Phobos", 9378.+0.0151, 22.5, 1.08};
+        Moon Demios = {path,"Demios", 23459.+0.0005, 12., 1.79};
+        Moon Callisto = {path,"Callisto", 1882710.+0.007, 4821., 0.19};
+        Moon Ganymede = {path,"Ganymede", 671030.+0.009, 3122., 0.47};
+        Moon Europa = {path,"Europa", 671030.+0.009, 3122., 0.47};
+        Moon Io = {path,"Io", 421700.+0.004, 3643., 0.04};
+        Moon Mimas = {path,"Mimas", 185520.+0.0202, 392., 1.53};
+        Moon Enceladus = {path,"Enceladus", 238020.+0.0045, 498., 0.};
+        Moon Tethys = {path,"Tethys", 294660., 1060., 1.86};
+        Moon Dione = {path,"Dione", 377400.+0.0022, 1120., 0.02};
+        Moon Rhea = {path,"Rhea", 527040.+0.0010, 1530., 0.35};
+        Moon Titan = {path,"Titan", 1221830.+0.0292, 5150., 0.33};
+        Moon Hyperion = {path,"Hyperion", 1481100.0+0.1042, 286., 0.43};
+        Moon Iapetus = {path,"Iapetus", 3561300.+0.0283, 1460., 14.72};
+        Moon Ariel = {path,"Ariel", 199900.+0.0012, 1158., 0.04};
+        Moon Umbriel = {path,"Umbriel", 266000.+0.0039, 1169., 0.13};
+        Moon Titania = {path,"Titania", 436300.+0.0011, 1577., 0.08};
+        Moon Oberon = {path,"Oberon", 583500.+0.0014, 1523., 0.07};
+        Moon Miranda = {path,"Miranda", 129900.+0.0013, 472.0, 4.34};
+        Moon Triton = {path,"Triton", 354760.+0.000016, 2707., 157.345};
+        Moon Nereid = {path,"Nereid", 5513400.+0.7512, 340., 7.23};
+        Moon Charon = {path,"Charon", 19591., 1212., 0.00005};
+
+        Planet Mercury = {"Mercury", path, subPath+"/assets/textures/MercuryMap.jpg", "", false, false, 69800000., 46000000., 4879., 88., 4222.6, 7.};
+        Planet Venus = {"Venus", path, subPath+"/assets/textures/VenusMap.jpg", "", false, false, 108900000., 107500000., 12104., 224.7, 2802., 3.4};
+        Planet Earth = {"Earth", path,subPath+"/assets/textures/EarthMap.jpg", subPath+"/assets/textures/CloudMap.jpg", true, false, 152100000., 147100000., 12756., 365.2, 24., 0};
+        Planet Mars = {"Mars", path,subPath+"/assets/textures/MarsMap.jpg", "", false, false, 249200000., 206600000., 6792., 687., 24.7, 1.9};
+        Planet Jupiter = {"Jupiter", path,subPath+"/assets/textures/JupiterMap.jpg", "", false, false, 816600000., 740500000., 142984., 4331., 9.9, 1.3};
+        Planet Saturn = {"Saturn", path,subPath+"/assets/textures/SaturnMap.jpg", subPath+"/assets/textures/saturnringcolour.jpg", true, true, 1514500000., 1352600000., 120536., 10747., 10.7, 2.5};
+        Planet Uranus = {"Uranus", path,subPath+"/assets/textures/UranusMap.jpg", subPath+"/assets/textures/uranusringcolour.jpg", true, true, 3003600000., 2741300000., 51118., 30589., 17.2, 0.8};
+        Planet Neptune = {"Neptune", path,subPath+"/assets/textures/NeptuneMap.jpg", "", false, false, 4545700000., 4444500000., 49528., 59800., 16.1, 1.8};
+        Planet Pluto = {"Pluto", path,subPath+"/assets/textures/PlutoMap.jpg", "", false, false, 7375900000., 4436800000., 2370., 90560., 153.3, 17.2};
 
         /*
         _planets.push_back(&Mercury);

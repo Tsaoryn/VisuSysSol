@@ -24,7 +24,7 @@ namespace glimac {
             void initPlanets(char* path);
 
         public:
-            Sun(char* path, Sphere sphere = Sphere(1.0, 32, 16), std::string pathImg = "/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/GLImac-Template/assets/textures/SunMap.jpg", float diameter = 1391016.0f,float rotation = 25.0f*24):
+            Sun(char* path, Sphere sphere = Sphere(1.0, 32, 16), std::string pathImg = "/home/2ins2/nhipolit/Documents/3D/VisuSysSol/GLImac-Template/assets/textures/SunMap.jpg", float diameter = 1391016.0f,float rotation = 25.0f*24):
              _diameter(diameter), _rotation(rotation), _sphere(sphere){
                 _imgSun = loadImage(pathImg);
                 FilePath applicationPath(path);

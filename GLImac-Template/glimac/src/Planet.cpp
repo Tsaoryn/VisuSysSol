@@ -1,14 +1,23 @@
 #include "glimac/Planet.hpp"
 
 namespace glimac{
-
+    /*
     void Planet::initPlanet(std::string name){
         list<std::array<string,9>> list = splitPlanet();
 
-        for(std::array<string,9> tab : list)
+        for(std::array<string,9> tab : list) {
+            std::cout << "tab[0] :"<< std::endl;
             if(tab[0] == name){
-                istringstream(tab[1]) >> std::boolalpha >> _extra ;
-                istringstream(tab[2]) >> std::boolalpha >> _rings ;
+                std::cout << tab[1] << std::endl;
+
+                if(tab[1] == "1") _extra = true;
+                else _extra = false;
+                if(tab[2] == "1") _rings = true;
+                else _rings = false;
+
+                std::cout << _extra << std::endl;
+                std::cout << _rings << std::endl;
+
                 _aphelion = stof(tab[3]);
                 _perihelion = stof(tab[4]);
                 _diameter = stof(tab[5]);
@@ -17,6 +26,7 @@ namespace glimac{
                 _orbitalInclination = stof(tab[8]);
                 break;
             }
+        }
     }
 
     void Planet::initMoonList(std::string name, char* path){
@@ -26,7 +36,7 @@ namespace glimac{
             Moon m = Moon(path, s);
             _moons.push_back(&m);
         }
-    }
+    }*/
 
     void Planet::initTexture(){
         glGenTextures(1,&_texturePlanet);
@@ -40,7 +50,7 @@ namespace glimac{
     void Planet::initTextureExtra(){
         glGenTextures(1,&_textureExtra);
         glBindTexture(GL_TEXTURE_2D, _textureExtra);
-            glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,_imgExtra->getWidth(),_imgExtra->getHeight(),0,GL_RGBA,GL_FLOAT,_imgExtra->getPixels());
+            glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA,_imgExtra->getWidth(),_imgExtra->getHeight(),0,GL_RGBA,GL_FLOAT,_imgExtra->getPixels()); //segfault
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glBindTexture(GL_TEXTURE_2D, 0);

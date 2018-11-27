@@ -55,8 +55,6 @@ FilePath.hpp
 /home/2ins2/nhipolit/Documents/3D/VisuSysSol/GLImac-Template/glimac/include/glimac/Moon.hpp
 MoonProgram.hpp
 /home/2ins2/nhipolit/Documents/3D/VisuSysSol/GLImac-Template/glimac/include/glimac/MoonProgram.hpp
-glimac/Parseur.hpp
--
 glimac/Image.hpp
 -
 
@@ -85,8 +83,6 @@ Moon.hpp
 /home/2ins2/nhipolit/Documents/3D/VisuSysSol/GLImac-Template/glimac/include/glimac/Moon.hpp
 PlanetProgram.hpp
 /home/2ins2/nhipolit/Documents/3D/VisuSysSol/GLImac-Template/glimac/include/glimac/PlanetProgram.hpp
-Parseur.hpp
-/home/2ins2/nhipolit/Documents/3D/VisuSysSol/GLImac-Template/glimac/include/glimac/Parseur.hpp
 list
 -
 
