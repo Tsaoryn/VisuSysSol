@@ -1,7 +1,0 @@
-Earth Moon
-Mars Phobos Demios
-Jupiter Callisto Ganymède Europa Io
-Saturn Mimas Enceladus Tethys Dione Rhea Titan Hyperion Iapetus
-Uranus Ariel Umbriel Titania Oberon Miranda
-Neptune Triton Nereid
-Pluto Charon

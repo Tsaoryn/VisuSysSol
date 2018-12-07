@@ -1,4 +1,4 @@
-# Install script for directory: /home/2ins2/nhipolit/Documents/3D/VisuSysSol/GLImac-Template/VisuSysSol
+# Install script for directory: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/GLImac-Template/VisuSysSol
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

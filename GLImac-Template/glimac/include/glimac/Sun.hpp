@@ -1,10 +1,11 @@
 #pragma once
 #include <glimac/Sphere.hpp>
-#include <map>
+#include <iostream>
+#include <fstream>
 #include "SunProgram.hpp"
 #include "Planet.hpp"
 #include "Moon.hpp"
-
+ 
 namespace glimac {
     class Sun{
         private:
@@ -24,9 +25,14 @@ namespace glimac {
             void initPlanets(char* path);
 
         public:
-            Sun(char* path, Sphere sphere = Sphere(1.0, 32, 16), std::string pathImg = "/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/GLImac-Template/assets/textures/SunMap.jpg", float diameter = 1391016.0f,float rotation = 25.0f*24):
+            Sun(char* path, Sphere sphere = Sphere(1.0, 32, 16), std::string pathImg = "/assets/textures/SunMap.jpg", float diameter = 1391016.0f,float rotation = 25.0f*24):
              _diameter(diameter), _rotation(rotation), _sphere(sphere){
-                _imgSun = loadImage(pathImg);
+                
+                std::ifstream file("../GLImac-Template/assets/ressources/path.txt");
+                std::string subPath;
+                getline(file, subPath);
+                
+                _imgSun = loadImage(subPath+pathImg);
                 FilePath applicationPath(path);
                 _programSun = {applicationPath};
                 this->initVboVao();
