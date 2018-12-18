@@ -111,8 +111,6 @@ common.hpp
 /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/GLImac-Template/glimac/include/glimac/Sun.hpp
 glimac/Sphere.hpp
 -
-iostream
--
 fstream
 -
 SunProgram.hpp
@@ -233,6 +231,8 @@ glimac/Sphere.hpp
 /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/GLImac-Template/glimac/src/Sun.cpp
 glimac/Sun.hpp
 /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/GLImac-Template/glimac/src/glimac/Sun.hpp
+iostream
+-
 
 /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/GLImac-Template/glimac/src/TrackballCamera.cpp
 glimac/TrackballCamera.hpp

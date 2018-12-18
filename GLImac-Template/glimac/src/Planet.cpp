@@ -33,19 +33,6 @@ namespace glimac{
             this->drawPlanetExtra(sunDiameter, sunRotation, nb_vertex, t);
         else
             this->drawSimplePlanet(sunDiameter, sunRotation, nb_vertex, t);
-            
-        /*glUniform1i(earthProgram.uEarthTexture, 0);
-        glUniform1i(earthProgram.uCloudTexture, 1);
-        
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, textureEarth);
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, textureCloud);
-        
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, 0);
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, 0);*/
     }
     
     void Planet::drawPlanetRing(float sunDiameter, float sunRotation, float nb_vertex, float t){
@@ -88,7 +75,7 @@ namespace glimac{
         if(_extra)
             glDeleteTextures(1,&_textureExtra);
         
-        for(Moon * moon : _moons){
+        for(auto moon : _moons){
             moon->deleteTextures();
         }
     }
