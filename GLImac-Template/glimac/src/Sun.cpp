@@ -154,10 +154,14 @@ namespace glimac{
         glBindVertexArray(0);
         
         for (auto planet : _planets) {
-            planet->drawPlanet(_diameter,_rotation, _sphere.getVertexCount(),1.0f);
+            planet->drawPlanet(_diameter,_rotation, _sphere.getVertexCount(),t);
         }
         
     }
+    
+    void Sun::drawOnePlanet(int numPlanet, float t){
+		_planets[numPlanet]->drawPlanetAlone(_sphere.getVertexCount(),t,_vao);
+	}
     
     void Sun::deleteTextures(){
         glDeleteTextures(1,&_textureSun);

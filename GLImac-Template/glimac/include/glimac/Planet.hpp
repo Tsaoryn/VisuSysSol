@@ -45,6 +45,11 @@ namespace glimac {
             void drawPlanetExtra(float sunDiameter, float sunRotation, float nb_vertex, float t);
             void drawSimplePlanet(float sunDiameter, float sunRotation, float nb_vertex, float t);
             
+            void drawPlanetAlone(float nb_vertex, float t, GLuint vao);
+            void drawPlanetRingAlone(float nb_vertex, float t, GLuint vao);
+            void drawPlanetExtraAlone(float nb_vertex, float t, GLuint vao);
+            void drawSimplePlanetAlone(float nb_vertex, float t, GLuint vao);
+            
             void deleteTextures();
     };
 }

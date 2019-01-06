@@ -17,7 +17,7 @@ namespace glimac {
             std::unique_ptr<Image> _imgSun;
             float _diameter;
             float _rotation;
-            std::list<Planet*> _planets;
+            std::vector<Planet*> _planets;
             
             void initVboVao();
             void initTexture();
@@ -26,7 +26,7 @@ namespace glimac {
         public:
             Sun(char* path, Sphere sphere = Sphere(1.0, 32, 16), std::string pathImg = "/assets/textures/SunMap.jpg", float diameter = 1391016.0f,float rotation = 25.0f*24):
              _diameter(diameter), _rotation(rotation), _sphere(sphere){
-                 
+    
                 ifstream file("../GLImac-Template/assets/ressources/path.txt");
                 std::string subPath;
                 getline(file, subPath);
@@ -39,6 +39,7 @@ namespace glimac {
                 this->initPlanets(path);
             }
             
+            void drawOnePlanet(int numPlanet, float t);
             void drawSystem(float t);
             void deleteTextures();
     };
