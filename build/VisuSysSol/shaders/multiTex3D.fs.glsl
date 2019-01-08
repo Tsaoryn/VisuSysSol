@@ -13,4 +13,6 @@ void main(){
     vec4 tmp = texture(uTexture, vFragTex);
     vec4 tmp2 = texture(uTexture2, vFragTex);
     fFragNormalVS = tmp.xyz + tmp2.xyz;
+    
+    //fFragNormalVS = vec3(1,1,1);
 }

@@ -11,5 +11,5 @@ uniform sampler2D uTexture;
 void main(){
     vec4 tmp = texture(uTexture, vFragTex);
     fFragNormalVS = tmp.xyz;
-    //fFragNormalVS = vec3(1,1,1);
+    //fFragNormalVS = vec3(1,1,0);
 }

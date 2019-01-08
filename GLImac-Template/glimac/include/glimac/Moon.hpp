@@ -13,7 +13,8 @@ namespace glimac {
             std::unique_ptr<Image> _imgMoon;
             std::string _name;
 
-            float _ellipse;
+            float _majorAxis;
+            float _eccentricity;
             float _diameter;
             float _inclination;
             
@@ -22,7 +23,7 @@ namespace glimac {
         public:
             Moon(){}
             Moon(Moon const&){}
-            Moon(char* path, std::string name, std::string pathImg, float ellipse, float diameter, float inclination): _name(name), _ellipse(ellipse), _diameter(diameter), _inclination(inclination){
+            Moon(char* path, std::string name, std::string pathImg, float majorAxis, float eccentricity, float diameter, float inclination): _name(name), _majorAxis(majorAxis),_eccentricity(eccentricity), _diameter(diameter), _inclination(inclination){
                 FilePath applicationPath(path);
                 _programMoon = {applicationPath};
                 _imgMoon = loadImage(pathImg);
@@ -30,7 +31,7 @@ namespace glimac {
             }
             
             std::string getName();
-            void drawMoon();
+            void drawMoon(float planetDiameter, float nb_vertex, float t, GLuint vao);
             void deleteTextures();
     };
 }

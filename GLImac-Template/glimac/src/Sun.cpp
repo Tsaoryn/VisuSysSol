@@ -38,7 +38,7 @@ namespace glimac{
                 glVertexAttribPointer(VERTEX_ATTR_NORMAL_SHADER, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) (3*sizeof(GLfloat)));
                 glVertexAttribPointer(VERTEX_ATTR_TEX_SHADER, 2, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) (6*sizeof(GLfloat)));
         //débind
-            glBindBuffer(GL_ARRAY_BUFFER, 0);
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
         glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);//GL_FILL
     }
@@ -53,29 +53,29 @@ namespace glimac{
  
         
         std::string pathMoon = subPath+"/assets/textures/MoonMap.jpg";
-        Moon* moon = new Moon(path,"Moon",pathMoon,384400.0f+0.0549f,3475.0f,5.145f);
-        Moon* Phobos = new Moon(path,"Phobos",pathMoon,9378.0f+0.0151f,22.5f,1.08f);
-        Moon* Demios = new Moon(path,"Demios",pathMoon,23459.0f+0.0005f,12.0f,1.79f);
-        Moon* Callisto = new Moon(path,"Callisto",pathMoon,1882710.0f+0.007f,4821.0f,0.19f);
-        Moon* Ganymede = new Moon(path,"Ganymede",pathMoon,1070410.0f+0.001f,5262.0f,0.18f);
-        Moon* Europa = new Moon(path,"Europa",pathMoon,671030.0f+0.009f,3122.0f,0.47f);
-        Moon* Io = new Moon(path,"Io",pathMoon,421700.0f+0.004f,3643.0f,0.04f);
-        Moon* Mimas = new Moon(path,"Mimas",pathMoon,185520.0f+0.0202f,392.0f,1.53f);
-        Moon* Enceladus = new Moon(path,"Enceladus",pathMoon,238020.f+0.0045f,498.0f,0.0f);
-        Moon* Tethys = new Moon(path,"Tethys",pathMoon,294660.0f+0.0f,1060.0f,1.86f);
-        Moon* Dione = new Moon(path,"Dione",pathMoon,377400.0f+0.0022f,1120.0f,0.02f);
-        Moon* Rhea = new Moon(path,"Rhea",pathMoon,527040.0f+0.0010f,1530.0f,0.35f);
-        Moon* Titan = new Moon(path,"Titan",pathMoon,1221830.0f+0.0292f,5150.0f,0.33f);
-        Moon* Hyperion = new Moon(path,"Hyperion",pathMoon,1481100.0f+0.1042f,286.0f,0.43f);
-        Moon* Iapetus = new Moon(path,"Iapetus",pathMoon,3561300.0f+0.0283f,1460.0f,14.72f);
-        Moon* Ariel = new Moon(path,"Ariel",pathMoon,199900.0f+0.0012f,1158.0f,0.04f);
-        Moon* Umbriel = new Moon(path,"Umbriel",pathMoon,266000.0f+0.0039f,1169.0f,0.13f);
-        Moon* Titania = new Moon(path,"Titania",pathMoon,436300.0f+0.0011f,1577.0f,0.08);
-        Moon* Oberon = new Moon(path,"Oberon",pathMoon,583500.0f+0.0014,1523.0f,0.07f);
-        Moon* Miranda = new Moon(path,"Miranda",pathMoon,129900.0f+0.0013,472.0f,4.34f);
-        Moon* Triton = new Moon(path,"Triton",pathMoon,354760.0f+0.000016f,2707.0f,157.345f);
-        Moon* Nereid = new Moon(path,"Nereid",pathMoon,5513400.0f+0.7512,340.0f,7.23f);
-        Moon* Charon = new Moon(path,"Charon",pathMoon,19591.0f+0.0f,1212.0f,0.00005f);
+        Moon* moon = new Moon(path,"Moon",pathMoon,384400.0f,0.0549f,3475.0f,5.145f);
+        Moon* Phobos = new Moon(path,"Phobos",pathMoon,9378.0f,0.0151f,22.5f,1.08f);
+        Moon* Demios = new Moon(path,"Demios",pathMoon,23459.0f,0.0005f,12.0f,1.79f);
+        Moon* Callisto = new Moon(path,"Callisto",pathMoon,1882710.0f,0.007f,4821.0f,0.19f);
+        Moon* Ganymede = new Moon(path,"Ganymede",pathMoon,1070410.0f,0.001f,5262.0f,0.18f);
+        Moon* Europa = new Moon(path,"Europa",pathMoon,671030.0f,0.009f,3122.0f,0.47f);
+        Moon* Io = new Moon(path,"Io",pathMoon,421700.0f,0.004f,3643.0f,0.04f);
+        Moon* Mimas = new Moon(path,"Mimas",pathMoon,185520.0f,0.0202f,392.0f,1.53f);
+        Moon* Enceladus = new Moon(path,"Enceladus",pathMoon,238020.f,0.0045f,498.0f,0.0f);
+        Moon* Tethys = new Moon(path,"Tethys",pathMoon,294660.0f,0.0f,1060.0f,1.86f);
+        Moon* Dione = new Moon(path,"Dione",pathMoon,377400.0f,0.0022f,1120.0f,0.02f);
+        Moon* Rhea = new Moon(path,"Rhea",pathMoon,527040.0f,0.0010f,1530.0f,0.35f);
+        Moon* Titan = new Moon(path,"Titan",pathMoon,1221830.0f,0.0292f,5150.0f,0.33f);
+        Moon* Hyperion = new Moon(path,"Hyperion",pathMoon,1481100.0f,0.1042f,286.0f,0.43f);
+        Moon* Iapetus = new Moon(path,"Iapetus",pathMoon,3561300.0f,0.0283f,1460.0f,14.72f);
+        Moon* Ariel = new Moon(path,"Ariel",pathMoon,199900.0f,0.0012f,1158.0f,0.04f);
+        Moon* Umbriel = new Moon(path,"Umbriel",pathMoon,266000.0f,0.0039f,1169.0f,0.13f);
+        Moon* Titania = new Moon(path,"Titania",pathMoon,436300.0f,0.0011f,1577.0f,0.08);
+        Moon* Oberon = new Moon(path,"Oberon",pathMoon,583500.0f,0.0014,1523.0f,0.07f);
+        Moon* Miranda = new Moon(path,"Miranda",pathMoon,129900.0f,0.0013,472.0f,4.34f);
+        Moon* Triton = new Moon(path,"Triton",pathMoon,354760.0f,0.000016f,2707.0f,157.345f);
+        Moon* Nereid = new Moon(path,"Nereid",pathMoon,5513400.0f,0.7512,340.0f,7.23f);
+        Moon* Charon = new Moon(path,"Charon",pathMoon,19591.0f,0.0f,1212.0f,0.00005f);
                 
         Planet* Mercury = new Planet(path,subPath+"/assets/textures/MercuryMap.jpg", "", moons, false, false,69800000.0f,46000000.0f, 4879.0f, 88.0f, 4222.6f,7.0f);
         Planet* Venus = new Planet(path,subPath+"/assets/textures/VenusMap.jpg", "", moons, false, false,108900000.0f,107500000.0f, 12104.0f, 224.7f, 2802.0f,3.4f);
@@ -125,10 +125,6 @@ namespace glimac{
         _planets.push_back(Uranus);
         _planets.push_back(Neptune);
         _planets.push_back(Pluto);
-        
-        for (auto planet : _planets) {
-            planet->drawPlanet(_diameter,_rotation, _sphere.getVertexCount(),1.0f);
-        }
     }
 
     void Sun::drawSystem(float t){
@@ -157,6 +153,8 @@ namespace glimac{
             planet->drawPlanet(_diameter,_rotation, _sphere.getVertexCount(),t);
         }
         
+        glBindBuffer(GL_ARRAY_BUFFER, 0);
+        glBindVertexArray(0);
     }
     
     void Sun::drawOnePlanet(int numPlanet, float t){

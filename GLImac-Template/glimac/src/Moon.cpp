@@ -11,6 +11,10 @@ namespace glimac{
         glBindTexture(GL_TEXTURE_2D, 0);
     }
     
+    void Moon::drawMoon(float planetDiameter, float nb_vertex, float t, GLuint vao){
+    
+    }
+    
     std::string Moon::getName(){
         return _name;
     }
