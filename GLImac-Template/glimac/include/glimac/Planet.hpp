@@ -40,15 +40,15 @@ namespace glimac {
                 }
             }
             
-            void drawPlanet(float sunDiameter, float sunRotation, float nb_vertex, float t);
-            void drawPlanetRing(float sunDiameter, float sunRotation, float nb_vertex, float t);
-            void drawPlanetExtra(float sunDiameter, float sunRotation, float nb_vertex, float t);
-            void drawSimplePlanet(float sunDiameter, float sunRotation, float nb_vertex, float t);
+            void drawPlanet(float sunDiameter, float sunRotation, float nb_vertex, float t, TrackballCamera* camera);
+            void drawPlanetRing(float sunDiameter, float sunRotation, float nb_vertex, float t, TrackballCamera* camera);
+            void drawPlanetExtra(float sunDiameter, float sunRotation, float nb_vertex, float t, TrackballCamera* camera);
+            void drawSimplePlanet(float sunDiameter, float sunRotation, float nb_vertex, float t, TrackballCamera* camera);
             
-            void drawPlanetAlone(float nb_vertex, float t, GLuint vao);
-            void drawPlanetRingAlone(float nb_vertex, float t, GLuint vao);
-            void drawPlanetExtraAlone(float nb_vertex, float t, GLuint vao);
-            void drawSimplePlanetAlone(float nb_vertex, float t, GLuint vao);
+            void drawPlanetAlone(float sunRotation, float nb_vertex, float t, GLuint vao, TrackballCamera* camera);
+            void drawPlanetRingAlone(float sunRotation, float nb_vertex, float t, GLuint vao, TrackballCamera* camera);
+            void drawPlanetExtraAlone(float sunRotation, float nb_vertex, float t, GLuint vao, TrackballCamera* camera);
+            void drawSimplePlanetAlone(float sunRotation, float nb_vertex, float t, GLuint vao, TrackballCamera* camera);
             
             void deleteTextures();
     };

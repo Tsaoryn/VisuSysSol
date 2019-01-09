@@ -21,38 +21,38 @@ namespace glimac{
         glBindTexture(GL_TEXTURE_2D, 0);
     }
     
-    void Planet::drawPlanet(float sunDiameter, float sunRotation, float nb_vertex, float t){
+    void Planet::drawPlanet(float sunDiameter, float sunRotation, float nb_vertex, float t, TrackballCamera* camera){
         return;
         if(_extra && _rings)
-            this->drawPlanetRing(sunDiameter, sunRotation, nb_vertex, t);
+            this->drawPlanetRing(sunDiameter, sunRotation, nb_vertex, t, camera);
         else if(_extra)
-            this->drawPlanetExtra(sunDiameter, sunRotation, nb_vertex, t);
+            this->drawPlanetExtra(sunDiameter, sunRotation, nb_vertex, t, camera);
         else
-            this->drawSimplePlanet(sunDiameter, sunRotation, nb_vertex, t);
+            this->drawSimplePlanet(sunDiameter, sunRotation, nb_vertex, t, camera);
     }
     
-    void Planet::drawPlanetRing(float sunDiameter, float sunRotation, float nb_vertex, float t){
+    void Planet::drawPlanetRing(float sunDiameter, float sunRotation, float nb_vertex, float t, TrackballCamera* camera){
 
     }
     
-    void Planet::drawPlanetExtra(float sunDiameter, float sunRotation, float nb_vertex, float t){
+    void Planet::drawPlanetExtra(float sunDiameter, float sunRotation, float nb_vertex, float t, TrackballCamera* camera){
        
     }
     
-    void Planet::drawSimplePlanet(float sunDiameter, float sunRotation, float nb_vertex, float t){
+    void Planet::drawSimplePlanet(float sunDiameter, float sunRotation, float nb_vertex, float t, TrackballCamera* camera){
        
     }
     
-    void Planet::drawPlanetAlone(float nb_vertex, float t,GLuint vao ){
+    void Planet::drawPlanetAlone(float sunRotation, float nb_vertex, float t,GLuint vao, TrackballCamera* camera){
 		if(_extra && _rings)
-            this->drawPlanetRingAlone(nb_vertex, t, vao);
+            this->drawPlanetRingAlone(sunRotation,nb_vertex, t, vao, camera);
         else if(_extra)
-            this->drawPlanetExtraAlone(nb_vertex, t, vao);
+            this->drawPlanetExtraAlone(sunRotation,nb_vertex, t, vao, camera);
         else
-            this->drawSimplePlanetAlone(nb_vertex, t, vao);
+            this->drawSimplePlanetAlone(sunRotation,nb_vertex, t, vao, camera);
 	}
 	
-	void Planet::drawPlanetRingAlone(float nb_vertex, float t,GLuint vao){
+	void Planet::drawPlanetRingAlone(float sunRotation, float nb_vertex, float t,GLuint vao, TrackballCamera* camera){
        //bind
         _programPlanet.m_Program.use();
         glUniform1i(_programPlanet.uPlanetTexture, 0);
@@ -61,11 +61,11 @@ namespace glimac{
         glBindTexture(GL_TEXTURE_2D,_texturePlanet);
         
         /*to do camera*/
-        glm::mat4 viewMatrix = glm::mat4(1.0f);
+        glm::mat4 viewMatrix = camera->getViewMatrix();
     
-        glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f)* viewMatrix;
+        glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f);
         glm::mat4 MVMatrix = glm::translate(glm::mat4(1.0f),glm::vec3(0,0,-5)) * viewMatrix;
-        MVMatrix = glm::rotate(MVMatrix, t/1.0f, glm::vec3(0, 1, 0));
+        MVMatrix = glm::rotate(MVMatrix, t, glm::vec3(0, 1, 0));
         glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix)) * viewMatrix;
         glm::mat4 MVPMatrix = ProjMatrix * MVMatrix;
     
@@ -74,14 +74,14 @@ namespace glimac{
         glUniformMatrix4fv(_programPlanet.uNormalMatrix,1,GL_FALSE,glm::value_ptr(NormalMatrix));
         
         glDrawArrays(GL_TRIANGLES, 0, 8*nb_vertex);
-        /*for(auto moon : _moons){
-			moon->drawMoon();
-		}*/
+        for(auto moon : _moons){
+            moon->drawMoon(_diameter, ProjMatrix, nb_vertex, t, vao, camera);
+		}
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
     }
     
-    void Planet::drawPlanetExtraAlone(float nb_vertex, float t,GLuint vao){
+    void Planet::drawPlanetExtraAlone(float sunRotation, float nb_vertex, float t,GLuint vao, TrackballCamera* camera){
        //bind
         _programPlanet.m_Program.use();
         
@@ -94,11 +94,11 @@ namespace glimac{
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D,_textureExtra);
         /*to do camera*/
-        glm::mat4 viewMatrix = glm::mat4(1.0f);
+        glm::mat4 viewMatrix = camera->getViewMatrix();
     
-        glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f)* viewMatrix;
+        glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f);
         glm::mat4 MVMatrix = glm::translate(glm::mat4(1.0f),glm::vec3(0,0,-5)) * viewMatrix;
-        MVMatrix = glm::rotate(MVMatrix, t/1.0f, glm::vec3(0, 1, 0));
+        MVMatrix = glm::rotate(MVMatrix, t, glm::vec3(0, 1, 0));
         glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix)) * viewMatrix;
         glm::mat4 MVPMatrix = ProjMatrix * MVMatrix;
     
@@ -107,19 +107,18 @@ namespace glimac{
         glUniformMatrix4fv(_programPlanet.uNormalMatrix,1,GL_FALSE,glm::value_ptr(NormalMatrix));
         
         glDrawArrays(GL_TRIANGLES, 0, 8*nb_vertex);
-        
-        /*for(auto moon : _moons){
-			moon->drawMoon();
-		}*/
-        
-        //débind
-        glActiveTexture(GL_TEXTURE0);
+                glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, 0);
+        
+        for(auto moon : _moons){
+            moon->drawMoon(_diameter, ProjMatrix, nb_vertex, t, vao, camera);
+		}
+        //débind
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
     }
     
-    void Planet::drawSimplePlanetAlone(float nb_vertex, float t,GLuint vao){
+    void Planet::drawSimplePlanetAlone(float sunRotation, float nb_vertex, float t,GLuint vao, TrackballCamera* camera){
         //bind
         _programPlanet.m_Program.use();
         glUniform1i(_programPlanet.uPlanetTexture, 0);
@@ -127,11 +126,11 @@ namespace glimac{
         
         glBindTexture(GL_TEXTURE_2D,_texturePlanet);
         /*to do camera*/
-        glm::mat4 viewMatrix = glm::mat4(1.0f);
+        glm::mat4 viewMatrix = camera->getViewMatrix();
     
-        glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f)* viewMatrix;
+        glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f);
         glm::mat4 MVMatrix = glm::translate(glm::mat4(1.0f),glm::vec3(0,0,-5)) * viewMatrix;
-        MVMatrix = glm::rotate(MVMatrix, t/1.0f, glm::vec3(0, 1, 0));
+        MVMatrix = glm::rotate(MVMatrix, t, glm::vec3(0, 1, 0));
         glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix)) * viewMatrix;
         glm::mat4 MVPMatrix = ProjMatrix * MVMatrix;
     
@@ -140,9 +139,10 @@ namespace glimac{
         glUniformMatrix4fv(_programPlanet.uNormalMatrix,1,GL_FALSE,glm::value_ptr(NormalMatrix));
         
         glDrawArrays(GL_TRIANGLES, 0, 8*nb_vertex);
-        /*for(auto moon : _moons){
-			moon->drawMoon();
-		}*/
+        
+        for(auto moon : _moons){
+            moon->drawMoon(_diameter, ProjMatrix, nb_vertex, t, vao, camera);
+		}
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
     }

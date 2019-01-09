@@ -127,16 +127,16 @@ namespace glimac{
         _planets.push_back(Pluto);
     }
 
-    void Sun::drawSystem(float t){
+    void Sun::drawSystem(float t, TrackballCamera* camera){
         //bind
         _programSun.m_Program.use();
         glBindTexture(GL_TEXTURE_2D,_textureSun);
         glUniform1i(_programSun.uTexture, 0);
         glBindVertexArray(_vao);
         /*to do camera*/
-        glm::mat4 viewMatrix = glm::mat4(1.0f);
+        glm::mat4 viewMatrix = camera->getViewMatrix();
     
-        glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f)* viewMatrix;
+        glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f);
         glm::mat4 MVMatrix = glm::translate(glm::mat4(1.0f),glm::vec3(0,0,-5)) * viewMatrix;
         MVMatrix = glm::rotate(MVMatrix, t/1.0f, glm::vec3(0, 1, 0));
         glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix)) * viewMatrix;
@@ -150,15 +150,15 @@ namespace glimac{
         glBindVertexArray(0);
         
         for (auto planet : _planets) {
-            planet->drawPlanet(_diameter,_rotation, _sphere.getVertexCount(),t);
+            planet->drawPlanet(_diameter,_rotation, _sphere.getVertexCount(),t, camera);
         }
         
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
     }
     
-    void Sun::drawOnePlanet(int numPlanet, float t){
-		_planets[numPlanet]->drawPlanetAlone(_sphere.getVertexCount(),t,_vao);
+    void Sun::drawOnePlanet(int numPlanet, float t, TrackballCamera* camera){
+		_planets[numPlanet]->drawPlanetAlone(_rotation,_sphere.getVertexCount(), t, _vao, camera);
 	}
     
     void Sun::deleteTextures(){
