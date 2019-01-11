@@ -152,6 +152,33 @@ src/Cone.cpp.s:
 	cd /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/build && $(MAKE) -f glimac/CMakeFiles/glimac.dir/build.make glimac/CMakeFiles/glimac.dir/src/Cone.cpp.s
 .PHONY : src/Cone.cpp.s
 
+src/Ellipse.o: src/Ellipse.cpp.o
+
+.PHONY : src/Ellipse.o
+
+# target to build an object file
+src/Ellipse.cpp.o:
+	cd /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/build && $(MAKE) -f glimac/CMakeFiles/glimac.dir/build.make glimac/CMakeFiles/glimac.dir/src/Ellipse.cpp.o
+.PHONY : src/Ellipse.cpp.o
+
+src/Ellipse.i: src/Ellipse.cpp.i
+
+.PHONY : src/Ellipse.i
+
+# target to preprocess a source file
+src/Ellipse.cpp.i:
+	cd /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/build && $(MAKE) -f glimac/CMakeFiles/glimac.dir/build.make glimac/CMakeFiles/glimac.dir/src/Ellipse.cpp.i
+.PHONY : src/Ellipse.cpp.i
+
+src/Ellipse.s: src/Ellipse.cpp.s
+
+.PHONY : src/Ellipse.s
+
+# target to generate assembly for a file
+src/Ellipse.cpp.s:
+	cd /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/build && $(MAKE) -f glimac/CMakeFiles/glimac.dir/build.make glimac/CMakeFiles/glimac.dir/src/Ellipse.cpp.s
+.PHONY : src/Ellipse.cpp.s
+
 src/FreeFlyCamera.o: src/FreeFlyCamera.cpp.o
 
 .PHONY : src/FreeFlyCamera.o
@@ -515,6 +542,9 @@ help:
 	@echo "... src/Cone.o"
 	@echo "... src/Cone.i"
 	@echo "... src/Cone.s"
+	@echo "... src/Ellipse.o"
+	@echo "... src/Ellipse.i"
+	@echo "... src/Ellipse.s"
 	@echo "... src/FreeFlyCamera.o"
 	@echo "... src/FreeFlyCamera.i"
 	@echo "... src/FreeFlyCamera.s"

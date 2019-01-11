@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/glimac.dir/src/Cone.cpp.o"
+  "CMakeFiles/glimac.dir/src/Ellipse.cpp.o"
   "CMakeFiles/glimac.dir/src/FreeFlyCamera.cpp.o"
   "CMakeFiles/glimac.dir/src/Geometry.cpp.o"
   "CMakeFiles/glimac.dir/src/Image.cpp.o"

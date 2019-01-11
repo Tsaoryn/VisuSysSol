@@ -1,6 +1,7 @@
 #pragma once
 #include "Moon.hpp"
 #include "PlanetProgram.hpp"
+#include <glimac/Ellipse.hpp>
 #include <list>
 
 namespace glimac {
@@ -12,11 +13,13 @@ namespace glimac {
             std::unique_ptr<Image> _imgPlanet;
             std::unique_ptr<Image> _imgExtra;
             std::list<Moon*> _moons;
+            Ellipse _ellipse;
             
             bool _extra;
             bool _rings;
             float _aphelion;
             float _perihelion;
+            float _eccentricity;
             float _diameter;
             float _orbitalPeriod;
             float _lengthDays;
@@ -33,6 +36,8 @@ namespace glimac {
                 FilePath applicationPath(path);
                 _programPlanet = {applicationPath, extra};
                 _imgPlanet = loadImage(pathImg);
+                _eccentricity = -1*((_perihelion / ((aphelion+perihelion)/2))-1);
+                _ellipse = Ellipse(perihelion, aphelion, _eccentricity, orbitalInclination);
                 this->initTexture();
                 if(_extra){
                     _imgExtra = loadImage(pathImg2);

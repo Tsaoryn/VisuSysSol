@@ -18,6 +18,14 @@ vector
 common.hpp
 /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/common.hpp
 
+/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/Ellipse.hpp
+vector
+-
+common.hpp
+/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/common.hpp
+glimac/Camera.hpp
+/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/glimac/Camera.hpp
+
 /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/FilePath.hpp
 string
 -
@@ -63,6 +71,8 @@ glimac/TrackballCamera.hpp
 -
 glimac/FreeFlyCamera.hpp
 -
+glimac/Ellipse.hpp
+-
 glimac/Image.hpp
 -
 
@@ -77,6 +87,8 @@ Moon.hpp
 /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/Moon.hpp
 PlanetProgram.hpp
 /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/PlanetProgram.hpp
+glimac/Ellipse.hpp
+-
 list
 -
 
@@ -195,6 +207,18 @@ glimac/common.hpp
 /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/src/glimac/common.hpp
 glimac/Cone.hpp
 /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/src/glimac/Cone.hpp
+
+/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/src/Ellipse.cpp
+cmath
+-
+vector
+-
+iostream
+-
+glimac/Ellipse.hpp
+/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/src/glimac/Ellipse.hpp
+glimac/common.hpp
+/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/src/glimac/common.hpp
 
 /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/src/FreeFlyCamera.cpp
 glimac/FreeFlyCamera.hpp

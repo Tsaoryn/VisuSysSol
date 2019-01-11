@@ -16,8 +16,10 @@ namespace glimac{
     
     
     void Moon::drawMoon(float planetDiameter, glm::mat4 ProjMatrix, float nb_vertex, float t, GLuint vao, Camera* camera){
+        _ellipse.draw(planetDiameter, camera);
+        
         float scaleValue = _diameter/planetDiameter;
-        float scaleMajorAxis = _majorAxis/planetDiameter;
+        float scaleMajorAxis = (_aphelion+_perihelion)/2.0f/planetDiameter;
         float Sin = sin(_inclination);
         float Cos = cos(_inclination);
         
