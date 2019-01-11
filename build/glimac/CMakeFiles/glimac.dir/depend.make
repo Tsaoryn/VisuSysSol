@@ -96,6 +96,7 @@ glimac/CMakeFiles/glimac.dir/src/Cone.cpp.o: /home/2ins2/ksadki01/Documents/synt
 glimac/CMakeFiles/glimac.dir/src/Cone.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/third-party/include/glm/vec4.hpp
 glimac/CMakeFiles/glimac.dir/src/Cone.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/third-party/include/glm/vector_relational.hpp
 
+glimac/CMakeFiles/glimac.dir/src/FreeFlyCamera.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/Camera.hpp
 glimac/CMakeFiles/glimac.dir/src/FreeFlyCamera.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/FreeFlyCamera.hpp
 glimac/CMakeFiles/glimac.dir/src/FreeFlyCamera.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/glm.hpp
 glimac/CMakeFiles/glimac.dir/src/FreeFlyCamera.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/src/FreeFlyCamera.cpp
@@ -387,7 +388,9 @@ glimac/CMakeFiles/glimac.dir/src/Image.cpp.o: /home/2ins2/ksadki01/Documents/syn
 glimac/CMakeFiles/glimac.dir/src/Image.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/third-party/include/glm/vec4.hpp
 glimac/CMakeFiles/glimac.dir/src/Image.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/third-party/include/glm/vector_relational.hpp
 
+glimac/CMakeFiles/glimac.dir/src/Moon.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/Camera.hpp
 glimac/CMakeFiles/glimac.dir/src/Moon.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/FilePath.hpp
+glimac/CMakeFiles/glimac.dir/src/Moon.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/FreeFlyCamera.hpp
 glimac/CMakeFiles/glimac.dir/src/Moon.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/Image.hpp
 glimac/CMakeFiles/glimac.dir/src/Moon.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/Moon.hpp
 glimac/CMakeFiles/glimac.dir/src/Moon.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/MoonProgram.hpp
@@ -488,7 +491,9 @@ glimac/CMakeFiles/glimac.dir/src/Moon.cpp.o: /home/2ins2/ksadki01/Documents/synt
 glimac/CMakeFiles/glimac.dir/src/Moon.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/third-party/include/glm/vec4.hpp
 glimac/CMakeFiles/glimac.dir/src/Moon.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/third-party/include/glm/vector_relational.hpp
 
+glimac/CMakeFiles/glimac.dir/src/Planet.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/Camera.hpp
 glimac/CMakeFiles/glimac.dir/src/Planet.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/FilePath.hpp
+glimac/CMakeFiles/glimac.dir/src/Planet.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/FreeFlyCamera.hpp
 glimac/CMakeFiles/glimac.dir/src/Planet.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/Image.hpp
 glimac/CMakeFiles/glimac.dir/src/Planet.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/Moon.hpp
 glimac/CMakeFiles/glimac.dir/src/Planet.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/MoonProgram.hpp
@@ -691,7 +696,9 @@ glimac/CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.o: /home/2ins2/ksadki01/Do
 glimac/CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/third-party/include/glm/vec4.hpp
 glimac/CMakeFiles/glimac.dir/src/SDLWindowManager.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/third-party/include/glm/vector_relational.hpp
 
+glimac/CMakeFiles/glimac.dir/src/Selector.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/Camera.hpp
 glimac/CMakeFiles/glimac.dir/src/Selector.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/FilePath.hpp
+glimac/CMakeFiles/glimac.dir/src/Selector.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/FreeFlyCamera.hpp
 glimac/CMakeFiles/glimac.dir/src/Selector.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/Image.hpp
 glimac/CMakeFiles/glimac.dir/src/Selector.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/Moon.hpp
 glimac/CMakeFiles/glimac.dir/src/Selector.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/MoonProgram.hpp
@@ -898,7 +905,9 @@ glimac/CMakeFiles/glimac.dir/src/Sphere.cpp.o: /home/2ins2/ksadki01/Documents/sy
 glimac/CMakeFiles/glimac.dir/src/Sphere.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/third-party/include/glm/vec4.hpp
 glimac/CMakeFiles/glimac.dir/src/Sphere.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/third-party/include/glm/vector_relational.hpp
 
+glimac/CMakeFiles/glimac.dir/src/Sun.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/Camera.hpp
 glimac/CMakeFiles/glimac.dir/src/Sun.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/FilePath.hpp
+glimac/CMakeFiles/glimac.dir/src/Sun.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/FreeFlyCamera.hpp
 glimac/CMakeFiles/glimac.dir/src/Sun.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/Image.hpp
 glimac/CMakeFiles/glimac.dir/src/Sun.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/Moon.hpp
 glimac/CMakeFiles/glimac.dir/src/Sun.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/MoonProgram.hpp
@@ -1004,6 +1013,7 @@ glimac/CMakeFiles/glimac.dir/src/Sun.cpp.o: /home/2ins2/ksadki01/Documents/synth
 glimac/CMakeFiles/glimac.dir/src/Sun.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/third-party/include/glm/vec4.hpp
 glimac/CMakeFiles/glimac.dir/src/Sun.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/third-party/include/glm/vector_relational.hpp
 
+glimac/CMakeFiles/glimac.dir/src/TrackballCamera.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/Camera.hpp
 glimac/CMakeFiles/glimac.dir/src/TrackballCamera.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/TrackballCamera.hpp
 glimac/CMakeFiles/glimac.dir/src/TrackballCamera.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/glm.hpp
 glimac/CMakeFiles/glimac.dir/src/TrackballCamera.cpp.o: /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/src/TrackballCamera.cpp

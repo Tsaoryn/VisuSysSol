@@ -1,6 +1,7 @@
 #pragma once
 #include "MoonProgram.hpp"
 #include <glimac/TrackballCamera.hpp>
+#include <glimac/FreeFlyCamera.hpp>
 #include <glimac/Image.hpp>
 
 using namespace std;
@@ -32,7 +33,7 @@ namespace glimac {
             }
             
             std::string getName();
-            void drawMoon(float planetDiameter, glm::mat4 ProjMatrix, float nb_vertex, float t, GLuint vao, TrackballCamera* camera);
+            void drawMoon(float planetDiameter, glm::mat4 ProjMatrix, float nb_vertex, float t, GLuint vao, Camera* camera);
             void deleteTextures();
     };
 }

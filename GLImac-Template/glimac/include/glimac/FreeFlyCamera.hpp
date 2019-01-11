@@ -1,9 +1,10 @@
 #pragma once
 #include "glimac/glm.hpp"
+#include <glimac/Camera.hpp>
 #include <math.h>
 
 namespace glimac {
-    class FreeFlyCamera{
+    class FreeFlyCamera : public Camera{
         private:
             glm::vec3 _m_Position;
             float _m_fPhi;

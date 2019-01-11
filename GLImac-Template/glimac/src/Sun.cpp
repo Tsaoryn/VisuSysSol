@@ -127,7 +127,7 @@ namespace glimac{
         _planets.push_back(Pluto);
     }
 
-    void Sun::drawSystem(float t, TrackballCamera* camera){
+    void Sun::drawSystem(float t, Camera* camera){
         //bind
         _programSun.m_Program.use();
         glBindTexture(GL_TEXTURE_2D,_textureSun);
@@ -157,7 +157,7 @@ namespace glimac{
         glBindVertexArray(0);
     }
     
-    void Sun::drawOnePlanet(int numPlanet, float t, TrackballCamera* camera){
+    void Sun::drawOnePlanet(int numPlanet, float t, Camera* camera){
 		_planets[numPlanet]->drawPlanetAlone(_rotation,_sphere.getVertexCount(), t, _vao, camera);
 	}
     

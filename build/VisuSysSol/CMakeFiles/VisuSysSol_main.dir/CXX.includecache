@@ -10,8 +10,18 @@
 glimac/Selector.hpp
 -
 
+/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/Camera.hpp
+
 /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/FilePath.hpp
 string
+-
+
+/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/FreeFlyCamera.hpp
+glimac/glm.hpp
+/home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/glimac/glm.hpp
+glimac/Camera.hpp
+-
+math.h
 -
 
 /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/Image.hpp
@@ -30,6 +40,8 @@ FilePath.hpp
 MoonProgram.hpp
 /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/MoonProgram.hpp
 glimac/TrackballCamera.hpp
+-
+glimac/FreeFlyCamera.hpp
 -
 glimac/Image.hpp
 -
@@ -89,6 +101,8 @@ glimac/MoonProgram.hpp
 -
 glimac/TrackballCamera.hpp
 -
+glimac/FreeFlyCamera.hpp
+-
 iostream
 -
 
@@ -127,6 +141,8 @@ glimac/FilePath.hpp
 /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/TrackballCamera.hpp
 glimac/glm.hpp
 /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/glimac/glm.hpp
+glimac/Camera.hpp
+-
 
 /home/2ins2/ksadki01/Documents/synthese/VisuSysSol/VisuSysSol/GLImac-Template/glimac/include/glimac/common.hpp
 GL/glew.h

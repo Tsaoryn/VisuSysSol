@@ -15,11 +15,12 @@ namespace glimac{
     
     
     
-    void Moon::drawMoon(float planetDiameter, glm::mat4 ProjMatrix, float nb_vertex, float t, GLuint vao, TrackballCamera* camera){
+    void Moon::drawMoon(float planetDiameter, glm::mat4 ProjMatrix, float nb_vertex, float t, GLuint vao, Camera* camera){
         float scaleValue = _diameter/planetDiameter;
         float scaleMajorAxis = _majorAxis/planetDiameter;
         float Sin = sin(_inclination);
         float Cos = cos(_inclination);
+        
         _programMoon.m_Program.use();
         glUniform1i(_programMoon.uMoonTexture, 0);
         glBindTexture(GL_TEXTURE_2D,_textureMoon);

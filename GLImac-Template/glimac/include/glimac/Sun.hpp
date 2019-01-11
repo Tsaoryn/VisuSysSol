@@ -39,8 +39,8 @@ namespace glimac {
                 this->initPlanets(path);
             }
             
-            void drawOnePlanet(int numPlanet, float t, TrackballCamera* camera);
-            void drawSystem(float t, TrackballCamera* camera);
+            void drawOnePlanet(int numPlanet, float t, Camera* camera);
+            void drawSystem(float t, Camera* camera);
             void deleteTextures();
     };
 }

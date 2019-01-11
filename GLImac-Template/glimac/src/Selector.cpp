@@ -18,20 +18,54 @@ namespace glimac{
 			/***************************************************************************************
 			 *RENDERING CODE
 			 ***************************************************************************************/
-			/*Events*/ 
-            if(_windowManager->isMouseButtonPressed(SDL_BUTTON_RIGHT)){
+			/*Events camera************************************************/ 
+            if(_freeFlyOn){
+                if(_windowManager->isMouseButtonPressed(SDL_BUTTON_RIGHT)){
+                    tmp = _windowManager->getMousePosition();
+                    mousePositionDiff.x = mousePosition.x - tmp.x;
+                    mousePositionDiff.y = mousePosition.y - tmp.y;
+                    mousePosition = tmp;
+                    _cameraFree->rotateLeft(mousePositionDiff.x);
+                    _cameraFree->rotateUp(mousePositionDiff.y);
+                }
+                else{
+                    mousePosition = _windowManager->getMousePosition();
+                    _cameraFree->rotateLeft(0);
+                    _cameraFree->rotateUp(0);
+
+                    if( e.type == SDL_KEYDOWN ){
+                        if (_windowManager->isKeyPressed(SDLK_UP)){
+                            _cameraFree->moveFront(0.05f);
+                        }
+                        else if (_windowManager->isKeyPressed(SDLK_DOWN)){
+                            _cameraFree->moveFront(-0.05f);
+                        }
+                        else if (_windowManager->isKeyPressed(SDLK_RIGHT)){
+                            _cameraFree->moveLeft(-0.05f);
+                        }
+                        else if (_windowManager->isKeyPressed(SDLK_LEFT)){
+                            _cameraFree->moveLeft(0.05f);
+                        }
+                    }
+                }
+            }
+
+            else{
+                if(_windowManager->isMouseButtonPressed(SDL_BUTTON_RIGHT)){
                 tmp = _windowManager->getMousePosition();
                 mousePositionDiff.x = mousePosition.x - tmp.x;
                 mousePositionDiff.y = mousePosition.y - tmp.y;
                 mousePosition = tmp;
                 _camera->rotateLeft(-mousePositionDiff.x);
                 _camera->rotateUp(-mousePositionDiff.y);
+                }
+                else{
+                    mousePosition = _windowManager->getMousePosition();
+                    _camera->rotateLeft(0);
+                    _camera->rotateUp(0);
+                }
             }
-            else{
-                mousePosition = _windowManager->getMousePosition();
-                _camera->rotateLeft(0);
-                _camera->rotateUp(0);
-            }
+            /*Events choice mode************************************************/ 
             if( e.type == SDL_KEYDOWN ){
                 if(_windowManager->isKeyPressed(SDLK_UP))
                     _camera->moveFront(0.1f);
@@ -57,12 +91,11 @@ namespace glimac{
 					_mode = 9;
 				else if(_windowManager->isKeyPressed(SDLK_q))
 					_mode = 0;
-				else if(_windowManager->isKeyPressed(SDLK_w))
-					_mode = 11;
-				else if(_windowManager->isKeyPressed(SDLK_x))
-					_mode = 12;
+                else if(_windowManager->isKeyPressed(SDLK_f))
+					_freeFlyOn = true;
+                else if(_windowManager->isKeyPressed(SDLK_t))
+					_freeFlyOn = false;
 			}
-			
 			/***************************************************************************************/ 
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			this->selectAction();
@@ -77,17 +110,17 @@ namespace glimac{
 			return;
 		switch(_mode) {
 			case 0:
-				_sun->drawSystem(_windowManager->getTime(), _camera);
-				break;
-			case 11:
-				_sun->drawSystem(_windowManager->getTime(), _camera);
-				break;
-			case 12:
-				_sun->drawSystem(_windowManager->getTime(), _camera);
+                _sun->drawSystem(_windowManager->getTime(), this->getCamera());
 				break;
 			default:
-				_sun->drawOnePlanet(_mode-1,_windowManager->getTime(), _camera);
+                _sun->drawOnePlanet(_mode-1,_windowManager->getTime(), this->getCamera());
 				break;
 		}
 	}
+    
+    Camera* Selector::getCamera(){
+        if(_freeFlyOn)
+            return _cameraFree;
+        return _camera;
+    }
 }

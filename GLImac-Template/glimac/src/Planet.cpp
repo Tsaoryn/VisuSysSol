@@ -21,7 +21,7 @@ namespace glimac{
         glBindTexture(GL_TEXTURE_2D, 0);
     }
     
-    void Planet::drawPlanet(float sunDiameter, float sunRotation, float nb_vertex, float t, TrackballCamera* camera){
+    void Planet::drawPlanet(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera){
         return;
         if(_extra && _rings)
             this->drawPlanetRing(sunDiameter, sunRotation, nb_vertex, t, camera);
@@ -31,19 +31,19 @@ namespace glimac{
             this->drawSimplePlanet(sunDiameter, sunRotation, nb_vertex, t, camera);
     }
     
-    void Planet::drawPlanetRing(float sunDiameter, float sunRotation, float nb_vertex, float t, TrackballCamera* camera){
+    void Planet::drawPlanetRing(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera){
 
     }
     
-    void Planet::drawPlanetExtra(float sunDiameter, float sunRotation, float nb_vertex, float t, TrackballCamera* camera){
+    void Planet::drawPlanetExtra(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera){
        
     }
     
-    void Planet::drawSimplePlanet(float sunDiameter, float sunRotation, float nb_vertex, float t, TrackballCamera* camera){
+    void Planet::drawSimplePlanet(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera){
        
     }
     
-    void Planet::drawPlanetAlone(float sunRotation, float nb_vertex, float t,GLuint vao, TrackballCamera* camera){
+    void Planet::drawPlanetAlone(float sunRotation, float nb_vertex, float t,GLuint vao, Camera* camera){
 		if(_extra && _rings)
             this->drawPlanetRingAlone(sunRotation,nb_vertex, t, vao, camera);
         else if(_extra)
@@ -52,7 +52,7 @@ namespace glimac{
             this->drawSimplePlanetAlone(sunRotation,nb_vertex, t, vao, camera);
 	}
 	
-	void Planet::drawPlanetRingAlone(float sunRotation, float nb_vertex, float t,GLuint vao, TrackballCamera* camera){
+	void Planet::drawPlanetRingAlone(float sunRotation, float nb_vertex, float t,GLuint vao, Camera* camera){
        //bind
         _programPlanet.m_Program.use();
         glUniform1i(_programPlanet.uPlanetTexture, 0);
@@ -81,7 +81,7 @@ namespace glimac{
         glBindVertexArray(0);
     }
     
-    void Planet::drawPlanetExtraAlone(float sunRotation, float nb_vertex, float t,GLuint vao, TrackballCamera* camera){
+    void Planet::drawPlanetExtraAlone(float sunRotation, float nb_vertex, float t,GLuint vao, Camera* camera){
        //bind
         _programPlanet.m_Program.use();
         
@@ -118,7 +118,7 @@ namespace glimac{
         glBindVertexArray(0);
     }
     
-    void Planet::drawSimplePlanetAlone(float sunRotation, float nb_vertex, float t,GLuint vao, TrackballCamera* camera){
+    void Planet::drawSimplePlanetAlone(float sunRotation, float nb_vertex, float t,GLuint vao, Camera* camera){
         //bind
         _programPlanet.m_Program.use();
         glUniform1i(_programPlanet.uPlanetTexture, 0);
