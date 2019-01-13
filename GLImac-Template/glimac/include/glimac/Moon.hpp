@@ -5,6 +5,8 @@
 #include <glimac/Ellipse.hpp>
 #include <glimac/Image.hpp>
 
+#include <iostream>
+
 using namespace std;
 
 namespace glimac {
@@ -28,11 +30,12 @@ namespace glimac {
         public:
             Moon(){}
             Moon(Moon const&){}
-            Moon(char* path, std::string name, std::string pathImg, float majorAxis, float eccentricity, float diameter, float inclination): _name(name),_eccentricity(eccentricity), _diameter(diameter), _inclination(inclination){
+            Moon(char* path, std::string name, std::string pathImg, float majorAxis, float eccentricity, float diameter, float inclination, float planetDiameter): _name(name),_eccentricity(eccentricity), _diameter(log10(diameter)), _inclination(glm::radians(inclination)){
                 FilePath applicationPath(path);
+                majorAxis = log10(majorAxis);
                 _aphelion = majorAxis * (1+eccentricity);
                 _perihelion = majorAxis * (1-eccentricity);
-                _ellipse = Ellipse(_perihelion, _aphelion, _eccentricity, _inclination);
+                _ellipse = Ellipse(path,_perihelion, _aphelion, _eccentricity, _inclination);
                 _programMoon = {applicationPath};
                 _imgMoon = loadImage(pathImg);
                 initTexture();

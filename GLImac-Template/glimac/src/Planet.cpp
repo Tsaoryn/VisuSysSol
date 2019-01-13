@@ -32,7 +32,7 @@ namespace glimac{
     }
     
     void Planet::drawPlanetRing(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera){
-
+		
     }
     
     void Planet::drawPlanetExtra(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera){
@@ -40,19 +40,19 @@ namespace glimac{
     }
     
     void Planet::drawSimplePlanet(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera){
-       
+		float scaleValue = std::pow(10,_diameter)/std::pow(10,sunDiameter);
     }
     
-    void Planet::drawPlanetAlone(float sunRotation, float nb_vertex, float t,GLuint vao, Camera* camera){
+    void Planet::drawPlanetAlone(float sunDiameter, float sunRotation, float nb_vertex, float t,GLuint vao, Camera* camera){
 		if(_extra && _rings)
-            this->drawPlanetRingAlone(sunRotation,nb_vertex, t, vao, camera);
+            this->drawPlanetRingAlone(sunDiameter,sunRotation,nb_vertex, t, vao, camera);
         else if(_extra)
-            this->drawPlanetExtraAlone(sunRotation,nb_vertex, t, vao, camera);
+            this->drawPlanetExtraAlone(sunDiameter,sunRotation,nb_vertex, t, vao, camera);
         else
-            this->drawSimplePlanetAlone(sunRotation,nb_vertex, t, vao, camera);
+            this->drawSimplePlanetAlone(sunDiameter,sunRotation,nb_vertex, t, vao, camera);
 	}
 	
-	void Planet::drawPlanetRingAlone(float sunRotation, float nb_vertex, float t,GLuint vao, Camera* camera){
+	void Planet::drawPlanetRingAlone(float sunDiameter, float sunRotation, float nb_vertex, float t,GLuint vao, Camera* camera){
        //bind
         _programPlanet.m_Program.use();
         glUniform1i(_programPlanet.uPlanetTexture, 0);
@@ -81,7 +81,7 @@ namespace glimac{
         glBindVertexArray(0);
     }
     
-    void Planet::drawPlanetExtraAlone(float sunRotation, float nb_vertex, float t,GLuint vao, Camera* camera){
+    void Planet::drawPlanetExtraAlone(float sunDiameter, float sunRotation, float nb_vertex, float t,GLuint vao, Camera* camera){
        //bind
         _programPlanet.m_Program.use();
         
@@ -118,7 +118,8 @@ namespace glimac{
         glBindVertexArray(0);
     }
     
-    void Planet::drawSimplePlanetAlone(float sunRotation, float nb_vertex, float t,GLuint vao, Camera* camera){
+    void Planet::drawSimplePlanetAlone(float sunDiameter, float sunRotation, float nb_vertex, float t,GLuint vao, Camera* camera){
+		
         //bind
         _programPlanet.m_Program.use();
         glUniform1i(_programPlanet.uPlanetTexture, 0);

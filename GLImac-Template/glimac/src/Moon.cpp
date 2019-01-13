@@ -16,22 +16,29 @@ namespace glimac{
     
     
     void Moon::drawMoon(float planetDiameter, glm::mat4 ProjMatrix, float nb_vertex, float t, GLuint vao, Camera* camera){
-        _ellipse.draw(planetDiameter, camera);
+		float scaleValue = std::pow(10,_diameter)/std::pow(10,planetDiameter);
+		_ellipse.draw(camera);
         
-        float scaleValue = _diameter/planetDiameter;
-        float scaleMajorAxis = (_aphelion+_perihelion)/2.0f/planetDiameter;
-        float Sin = sin(_inclination);
-        float Cos = cos(_inclination);
+        float radian = glm::radians(t*15);
+        
+        std::pair<float,float> tuple = _ellipse.getEllipseAandB();
+		float xFinal = tuple.first*cos(radian);
+        float Y = tuple.second*sin(radian);
+        float y = Y*cos(glm::radians(90.0f));
+        float z = Y*sin(glm::radians(90.0f));
+        
+        float yFinal = y*cos(_inclination)-sin(_inclination)*z;
+        float zFinal = y*sin(_inclination)+cos(_inclination)*z;
         
         _programMoon.m_Program.use();
         glUniform1i(_programMoon.uMoonTexture, 0);
         glBindTexture(GL_TEXTURE_2D,_textureMoon);
+        glBindVertexArray(vao);
         
         glm::mat4 viewMatrix = camera->getViewMatrix();
         
         glm::mat4 MVMatrix = glm::translate(glm::mat4(1.0f),glm::vec3(0,0,-5))* viewMatrix; // Translation
-        MVMatrix = glm::rotate(MVMatrix, t, glm::vec3(0, Cos, -Sin));
-        MVMatrix = glm::translate(MVMatrix, glm::vec3(scaleMajorAxis, 0, 0)); // Translation * Rotation * Translation
+        MVMatrix = glm::translate(MVMatrix,glm::vec3(xFinal,yFinal,zFinal));
         MVMatrix = glm::scale(MVMatrix, glm::vec3(scaleValue, scaleValue, scaleValue)); // Translation * Rotation * Translation * Scale
         
         glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix))* viewMatrix;
