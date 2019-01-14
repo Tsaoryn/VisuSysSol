@@ -30,11 +30,11 @@ namespace glimac {
         public:
             Moon(){}
             Moon(Moon const&){}
-            Moon(char* path, std::string name, std::string pathImg, float majorAxis, float eccentricity, float diameter, float inclination, float planetDiameter): _name(name),_eccentricity(eccentricity), _diameter(log10(diameter)), _inclination(glm::radians(inclination)){
+            Moon(char* path, std::string name, std::string pathImg, float majorAxis, float eccentricity, float diameter, float inclination, float planetDiameter, int num): _name(name),_eccentricity(eccentricity), _diameter(log10(diameter)), _inclination(glm::radians(inclination)){
                 FilePath applicationPath(path);
                 _aphelion = majorAxis * (1+eccentricity);
                 _perihelion = majorAxis * (1-eccentricity);
-                _ellipse = Ellipse(path,_perihelion, _aphelion, _eccentricity, _inclination);
+                _ellipse = Ellipse(path,_perihelion, _aphelion, _eccentricity, _inclination, num);
                 _programMoon = {applicationPath};
                 _imgMoon = loadImage(pathImg);
                 initTexture();

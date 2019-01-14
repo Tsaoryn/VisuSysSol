@@ -6,6 +6,7 @@ namespace glimac{
         glm::vec2 mousePosition = _windowManager->getMousePosition();
         glm::vec2 mousePositionDiff; 
         glm::vec2 tmp; 
+        float time = 0.0f;
         
 		while(!done) {
 			// Event loop:
@@ -69,6 +70,12 @@ namespace glimac{
             if( e.type == SDL_KEYDOWN ){
                 if(_windowManager->isKeyPressed(SDLK_UP))
                     _camera->moveFront(0.1f);
+                else if(_windowManager->isKeyPressed(SDLK_F1)){
+                    if(_fastModeOn)
+                        _fastModeOn = false;
+                    else
+                        _fastModeOn = true;
+                }
                 else if(_windowManager->isKeyPressed(SDLK_DOWN))
                     _camera->moveFront(-0.1f);
 				else if (_windowManager->isKeyPressed(SDLK_m))
@@ -96,24 +103,28 @@ namespace glimac{
                 else if(_windowManager->isKeyPressed(SDLK_t))
 					_freeFlyOn = false;
 			}
+            if(_fastModeOn)
+                time+=0.1;
+            else
+                time+=0.01;
 			/***************************************************************************************/ 
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-			this->selectAction();
+			this->selectAction(time);
 			_windowManager->swapBuffers();
 		}
 		_sun->deleteTextures();
 		return EXIT_SUCCESS;
 	}
 	
-	void Selector::selectAction(){
+	void Selector::selectAction(float time){
 		if(_mode<0 || _mode>12)
 			return;
 		switch(_mode) {
 			case 0:
-                _sun->drawSystem(_windowManager->getTime(), this->getCamera());
+                _sun->drawSystem(time, this->getCamera());
 				break;
 			default:
-                _sun->drawOnePlanet(_mode-1,_windowManager->getTime(), this->getCamera());
+                _sun->drawOnePlanet(_mode-1,time, this->getCamera());
 				break;
 		}
 	}

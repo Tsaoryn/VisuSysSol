@@ -19,14 +19,15 @@ namespace glimac {
             TrackballCamera* _camera;
             FreeFlyCamera* _cameraFree;
             bool _freeFlyOn;
+            bool _fastModeOn;
             int _mode = 0;
             Sun* _sun;
 			
-			void selectAction();
+			void selectAction(float time);
             Camera* getCamera();
             
         public:
-            Selector(SDLWindowManager* windowManager, char* path, bool freeFlyOn = false) : _windowManager(windowManager),_freeFlyOn(freeFlyOn){
+            Selector(SDLWindowManager* windowManager, char* path, bool freeFlyOn = false, bool fastModeOn = false) : _windowManager(windowManager),_freeFlyOn(freeFlyOn),_fastModeOn(fastModeOn){
                  _camera = new TrackballCamera();
                  _cameraFree = new FreeFlyCamera();
                  _sun = new Sun(path);

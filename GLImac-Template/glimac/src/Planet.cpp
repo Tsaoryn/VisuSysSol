@@ -54,7 +54,6 @@ namespace glimac{
     }
     
     void Planet::drawPlanet(float sunDiameter, GLuint vao, float nb_vertex, float t, Camera* camera){
-		return;
         if(_extra && _rings)
             this->drawPlanetRing(sunDiameter, vao, nb_vertex, t, camera);
         else if(_extra)
@@ -200,7 +199,7 @@ namespace glimac{
 	
 	void Planet::drawPlanetRingAlone(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera){
        //bind
-       float scaleValue = std::pow(10,_diameter)/std::pow(10,sunDiameter);
+       //float scaleValue = std::pow(10,_diameter)/std::pow(10,_diameter*2);
         _programPlanet.m_Program.use();
         glUniform1i(_programPlanet.uPlanetTexture, 0);
         glBindVertexArray(_vao);
@@ -212,8 +211,8 @@ namespace glimac{
     
         glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f);
         glm::mat4 MVMatrix = glm::translate(glm::mat4(1.0f),glm::vec3(0,0,-5)) * viewMatrix;
-        MVMatrix = glm::rotate(MVMatrix, t/_lengthDays, glm::vec3(0, 1, 0));
-        MVMatrix = glm::scale(MVMatrix, glm::vec3(scaleValue, scaleValue, scaleValue)); 
+        MVMatrix = glm::rotate(MVMatrix, t*10/_lengthDays, glm::vec3(0, -1, 0));
+        //MVMatrix = glm::scale(MVMatrix, glm::vec3(scaleValue, scaleValue, scaleValue)); 
         glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix)) * viewMatrix;
         glm::mat4 MVPMatrix = ProjMatrix * MVMatrix;
     
@@ -230,7 +229,7 @@ namespace glimac{
     }
     
     void Planet::drawPlanetExtraAlone(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera){
-		float scaleValue = std::pow(10,_diameter)/std::pow(10,sunDiameter);
+		//float scaleValue = std::pow(10,_diameter)/std::pow(10,sunDiameter);
        //bind
         _programPlanet.m_Program.use();
         
@@ -247,8 +246,8 @@ namespace glimac{
     
         glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f);
         glm::mat4 MVMatrix = glm::translate(glm::mat4(1.0f),glm::vec3(0,0,-5)) * viewMatrix;
-        MVMatrix = glm::rotate(MVMatrix, t/_lengthDays, glm::vec3(0, 1, 0));
-        MVMatrix = glm::scale(MVMatrix, glm::vec3(scaleValue, scaleValue, scaleValue)); 
+        MVMatrix = glm::rotate(MVMatrix, t*10/_lengthDays, glm::vec3(0, -1, 0));
+        //MVMatrix = glm::scale(MVMatrix, glm::vec3(scaleValue, scaleValue, scaleValue)); 
         glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix)) * viewMatrix;
         glm::mat4 MVPMatrix = ProjMatrix * MVMatrix;
     
@@ -269,7 +268,7 @@ namespace glimac{
     }
     
     void Planet::drawSimplePlanetAlone(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera){
-		float scaleValue = std::pow(10,_diameter)/std::pow(10,sunDiameter);
+		//float scaleValue = std::pow(10,_diameter)/std::pow(10,sunDiameter);
         //bind
         _programPlanet.m_Program.use();
         glUniform1i(_programPlanet.uPlanetTexture, 0);
@@ -281,8 +280,8 @@ namespace glimac{
     
         glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f);
         glm::mat4 MVMatrix = glm::translate(glm::mat4(1.0f),glm::vec3(0,0,-5)) * viewMatrix;
-        MVMatrix = glm::rotate(MVMatrix, t/_lengthDays, glm::vec3(0, 1, 0));
-        MVMatrix = glm::scale(MVMatrix, glm::vec3(scaleValue, scaleValue, scaleValue)); 
+        MVMatrix = glm::rotate(MVMatrix, t*10/_lengthDays, glm::vec3(0, -1, 0));
+        //MVMatrix = glm::scale(MVMatrix, glm::vec3(scaleValue, scaleValue, scaleValue)); 
         glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix)) * viewMatrix;
         glm::mat4 MVPMatrix = ProjMatrix * MVMatrix;
     

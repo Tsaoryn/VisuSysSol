@@ -7,11 +7,11 @@
 namespace glimac {
     
     void Ellipse::initVertices(){
-		float a = log10((_aphelion+_perihelion)/2.0f);
-		float b = log10(a*std::sqrt(1-(_eccentricity*_eccentricity)));
+		float a = log10((_aphelion+_perihelion)/2.0f)+_additionalNum;
+		float b = log10(((_aphelion+_perihelion)/2.0f)*std::sqrt(1-(_eccentricity*_eccentricity)))+_additionalNum;
 		float radian;
 		
-        for(float degree=0; degree<360; degree=degree+2.0f){
+        for(float degree=0; degree<360; degree=degree+0.04f){
 			radian = glm::radians(degree);
 			float x = a*cos(radian);
             float y = b*sin(radian);
@@ -33,8 +33,8 @@ namespace glimac {
     }
     
     std::pair<float,float> Ellipse::getEllipseAandB(){
-		float a = log10((_aphelion+_perihelion)/2.0f);
-		float b = log10(a*std::sqrt(1-(_eccentricity*_eccentricity)));
+		float a = log10((_aphelion+_perihelion)/2.0f)+_additionalNum;
+		float b = log10(((_aphelion+_perihelion)/2.0f)*std::sqrt(1-(_eccentricity*_eccentricity)))+_additionalNum;
 		return std::pair<float,float>(a,b);
 	}
     

@@ -24,9 +24,10 @@ namespace glimac {
             void initPlanets(char* path);
 
         public:
-            Sun(char* path, Sphere sphere = Sphere(log10(1391016.0f)/2.0f, 32, 16), std::string pathImg = "/assets/textures/SunMap.jpg", float diameter = log10(1391016.0f),float rotation = 25.0f*24):
+            Sun(char* path, Sphere sphere = Sphere(log10(1391016.0f/2.0f), 32, 16), std::string pathImg = "/assets/textures/SunMap.jpg", float diameter = log10(1391016.0f),float rotation = 25.0f*24):
              _diameter(diameter), _rotation(rotation), _sphere(sphere){
     
+                std::cout << log10(1391016.0f) << endl;
                 ifstream file("../GLImac-Template/assets/ressources/path.txt");
                 std::string subPath;
                 getline(file, subPath);
