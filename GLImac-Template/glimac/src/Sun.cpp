@@ -77,20 +77,20 @@ namespace glimac{
         Moon* Nereid = new Moon(path,"Nereid",pathMoon,5513400.0f,0.7512,340.0f,7.23f,49528.0f);
         Moon* Charon = new Moon(path,"Charon",pathMoon,19591.0f,0.0f,1212.0f,0.00005f,2370.0f);
                 
-        Planet* Mercury = new Planet(path,subPath+"/assets/textures/MercuryMap.jpg", "", moons, false, false,69800000.0f,46000000.0f, 4879.0f, 88.0f, 4222.6f,7.0f,_diameter);
-        Planet* Venus = new Planet(path,subPath+"/assets/textures/VenusMap.jpg", "", moons, false, false,108900000.0f,107500000.0f, 12104.0f, 224.7f, 2802.0f,3.4f,_diameter);
+        Planet* Mercury = new Planet(path,subPath+"/assets/textures/MercuryMap.jpg", "", moons, false, false,69800000.0f,46000000.0f, 4879.0f, 88.0f, 4222.6f,7.0f,_diameter,0.205f);
+        Planet* Venus = new Planet(path,subPath+"/assets/textures/VenusMap.jpg", "", moons, false, false,108900000.0f,107500000.0f, 12104.0f, 224.7f, 2802.0f,3.4f,_diameter,0.007f);
         moons.push_back(moon);
-        Planet* Earth = new Planet(path,subPath+"/assets/textures/EarthMap.jpg", subPath+"/assets/textures/CloudMap.jpg", moons, true, false,152100000.0f,147100000.0f, 12756.0f, 365.2f,24.0f,0.0f,_diameter);
+        Planet* Earth = new Planet(path,subPath+"/assets/textures/EarthMap.jpg", subPath+"/assets/textures/CloudMap.jpg", moons, true, false,152100000.0f,147100000.0f, 12756.0f, 365.2f,24.0f,0.0f,_diameter,0.017);
         moons.clear();
         moons.push_back(Phobos);
         moons.push_back(Demios);
-        Planet* Mars = new Planet(path,subPath+"/assets/textures/MarsMap.jpg", "", moons, false, false,249200000.0f,206600000.0f, 6792.0f, 687.0f,24.7f,1.9f,_diameter) ;
+        Planet* Mars = new Planet(path,subPath+"/assets/textures/MarsMap.jpg", "", moons, false, false,249200000.0f,206600000.0f, 6792.0f, 687.0f,24.7f,1.9f,_diameter,0.094f) ;
         moons.clear();
         moons.push_back(Callisto);
         moons.push_back(Ganymede);
         moons.push_back(Europa);
         moons.push_back(Io);
-        Planet* Jupiter = new Planet(path,subPath+"/assets/textures/JupiterMap.jpg", "", moons, false, false,816600000.0f,740500000.0f, 142984.0f,4331.0f,9.9f,1.3f,_diameter) ;
+        Planet* Jupiter = new Planet(path,subPath+"/assets/textures/JupiterMap.jpg", "", moons, false, false,816600000.0f,740500000.0f, 142984.0f,4331.0f,9.9f,1.3f,_diameter,0.049f) ;
         moons.clear();
         moons.push_back(Mimas);
         moons.push_back(Enceladus);
@@ -100,21 +100,21 @@ namespace glimac{
         moons.push_back(Titan);
         moons.push_back(Hyperion);
         moons.push_back(Iapetus);
-        Planet* Saturn = new Planet(path,subPath+"/assets/textures/SaturnMap.jpg", subPath+"/assets/textures/saturnringcolour.jpg", moons, true, true, 1514500000.0f,1352600000.0f, 120536.0f, 10747.0f,10.7f,2.5f,_diameter) ;
+        Planet* Saturn = new Planet(path,subPath+"/assets/textures/SaturnMap.jpg", subPath+"/assets/textures/saturnringcolour.jpg", moons, true, true, 1514500000.0f,1352600000.0f, 120536.0f, 10747.0f,10.7f,2.5f,_diameter,0.057f) ;
         moons.clear();
         moons.push_back(Ariel);
         moons.push_back(Umbriel);
         moons.push_back(Titania);
         moons.push_back(Oberon);
         moons.push_back(Miranda);
-        Planet* Uranus = new Planet(path,subPath+"/assets/textures/UranusMap.jpg", subPath+"/assets/textures/uranusringcolour.jpg", moons, true, true,3003600000.0f,2741300000.0f, 51118.0f, 30589.0f,17.2f, 0.8f,_diameter) ;
+        Planet* Uranus = new Planet(path,subPath+"/assets/textures/UranusMap.jpg", subPath+"/assets/textures/uranusringcolour.jpg", moons, true, true,3003600000.0f,2741300000.0f, 51118.0f, 30589.0f,17.2f, 0.8f,_diameter,0.046f) ;
         moons.clear();
         moons.push_back(Triton);
         moons.push_back(Nereid);
-        Planet* Neptune = new Planet(path,subPath+"/assets/textures/NeptuneMap.jpg", "", moons, false, false,4545700000.0f,4444500000.0f, 49528.0f, 59800.0f,16.1f,1.8f,_diameter) ;
+        Planet* Neptune = new Planet(path,subPath+"/assets/textures/NeptuneMap.jpg", "", moons, false, false,4545700000.0f,4444500000.0f, 49528.0f, 59800.0f,16.1f,1.8f,_diameter,0.011f) ;
         moons.clear();
         moons.push_back(Charon);
-        Planet* Pluto = new Planet(path,subPath+"/assets/textures/PlutoMap.jpg", "", moons, false, false,7375900000.0f,4436800000.0f, 2370.0f, 90560.0f,153.3f,17.2f,_diameter);
+        Planet* Pluto = new Planet(path,subPath+"/assets/textures/PlutoMap.jpg", "", moons, false, false,7375900000.0f,4436800000.0f, 2370.0f, 90560.0f,153.3f,17.2f,_diameter,0.244f);
         
         _planets.push_back(Mercury);
         _planets.push_back(Venus);
@@ -150,7 +150,7 @@ namespace glimac{
         glBindVertexArray(0);
         
         for (auto planet : _planets) {
-            planet->drawPlanet(_diameter,_rotation, _sphere.getVertexCount(),t, camera);
+            planet->drawPlanet(_diameter,_vao, _sphere.getVertexCount(),t, camera);
         }
         
         glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -158,7 +158,7 @@ namespace glimac{
     }
     
     void Sun::drawOnePlanet(int numPlanet, float t, Camera* camera){
-		_planets[numPlanet]->drawPlanetAlone(_diameter,_rotation,_sphere.getVertexCount(), t, _vao, camera);
+		_planets[numPlanet]->drawPlanetAlone(_diameter,_rotation,_sphere.getVertexCount(), t, camera);
 	}
     
     void Sun::deleteTextures(){

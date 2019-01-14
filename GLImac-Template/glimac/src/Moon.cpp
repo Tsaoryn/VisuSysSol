@@ -29,7 +29,7 @@ namespace glimac{
         
         float yFinal = y*cos(_inclination)-sin(_inclination)*z;
         float zFinal = y*sin(_inclination)+cos(_inclination)*z;
-        
+                
         _programMoon.m_Program.use();
         glUniform1i(_programMoon.uMoonTexture, 0);
         glBindTexture(GL_TEXTURE_2D,_textureMoon);

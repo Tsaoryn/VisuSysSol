@@ -606,6 +606,7 @@ glimac/CMakeFiles/glimac.dir/src/Planet.cpp.o
  /home/karim/Bureau/karim/VisuSysSol/GLImac-Template/glimac/include/glimac/PlanetProgram.hpp
  /home/karim/Bureau/karim/VisuSysSol/GLImac-Template/glimac/include/glimac/Program.hpp
  /home/karim/Bureau/karim/VisuSysSol/GLImac-Template/glimac/include/glimac/Shader.hpp
+ /home/karim/Bureau/karim/VisuSysSol/GLImac-Template/glimac/include/glimac/Sphere.hpp
  /home/karim/Bureau/karim/VisuSysSol/GLImac-Template/glimac/include/glimac/TrackballCamera.hpp
  /home/karim/Bureau/karim/VisuSysSol/GLImac-Template/glimac/include/glimac/common.hpp
  /home/karim/Bureau/karim/VisuSysSol/GLImac-Template/glimac/include/glimac/glm.hpp

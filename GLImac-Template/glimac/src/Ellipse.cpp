@@ -7,8 +7,8 @@
 namespace glimac {
     
     void Ellipse::initVertices(){
-		float a = (_aphelion+_perihelion)/2;
-		float b = std::sqrt(-1*(_eccentricity*_eccentricity-1)*(a*a));
+		float a = log10((_aphelion+_perihelion)/2.0f);
+		float b = log10(a*std::sqrt(1-(_eccentricity*_eccentricity)));
 		float radian;
 		
         for(float degree=0; degree<360; degree=degree+2.0f){
@@ -33,8 +33,8 @@ namespace glimac {
     }
     
     std::pair<float,float> Ellipse::getEllipseAandB(){
-		float a = (_aphelion+_perihelion)/2;
-		float b = std::sqrt(-1*(_eccentricity*_eccentricity-1)*(a*a));
+		float a = log10((_aphelion+_perihelion)/2.0f);
+		float b = log10(a*std::sqrt(1-(_eccentricity*_eccentricity)));
 		return std::pair<float,float>(a,b);
 	}
     
@@ -72,7 +72,6 @@ namespace glimac {
         glBindVertexArray(_vao);
         
         glm::mat4 viewMatrix = camera->getViewMatrix();
-        
         glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f);
         glm::mat4 MVMatrix = glm::translate(glm::mat4(1.0f),glm::vec3(0,0,-5))* viewMatrix;
         MVMatrix = glm::rotate(MVMatrix, glm::radians(90.0f), glm::vec3(1, 0, 0));

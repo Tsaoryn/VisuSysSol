@@ -32,7 +32,6 @@ namespace glimac {
             Moon(Moon const&){}
             Moon(char* path, std::string name, std::string pathImg, float majorAxis, float eccentricity, float diameter, float inclination, float planetDiameter): _name(name),_eccentricity(eccentricity), _diameter(log10(diameter)), _inclination(glm::radians(inclination)){
                 FilePath applicationPath(path);
-                majorAxis = log10(majorAxis);
                 _aphelion = majorAxis * (1+eccentricity);
                 _perihelion = majorAxis * (1-eccentricity);
                 _ellipse = Ellipse(path,_perihelion, _aphelion, _eccentricity, _inclination);

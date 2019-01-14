@@ -1,6 +1,7 @@
 #pragma once
 #include "Moon.hpp"
 #include "PlanetProgram.hpp"
+#include <glimac/Sphere.hpp>
 #include <list>
 
 namespace glimac {
@@ -14,6 +15,10 @@ namespace glimac {
             std::list<Moon*> _moons;
             Ellipse _ellipse;
             
+            GLuint _vbo;
+            GLuint _vao;
+            Sphere _sphere;
+                        
             bool _extra;
             bool _rings;
             float _aphelion;
@@ -24,19 +29,20 @@ namespace glimac {
             float _lengthDays;
             float _orbitalInclination;
             
+            void initVboVao();
             void initTexture();
             void initTextureExtra();
 
         public:
-          	Planet(){}
-          	Planet(Planet const&){}
-            Planet(char* path, std::string pathImg, std::string pathImg2, std::list<Moon*> moons, bool extra, bool rings, float aphelion, float perihelion, float diameter, float orbitalPeriod, float lengthDays, float orbitalInclination, float sunDiameter):
-            _moons(moons),_aphelion(log10(aphelion)), _perihelion(log10(perihelion)), _extra(extra), _rings(rings), _diameter(log10(diameter)), _orbitalPeriod(orbitalPeriod), _lengthDays(lengthDays), _orbitalInclination(glm::radians(orbitalInclination)){
+          	Planet() : _sphere(Sphere(log10(1.0f)/2.0f, 32, 16)){}
+          	Planet(Planet const&) : _sphere(Sphere(log10(1.0f)/2.0f, 32, 16)){}
+            Planet(char* path, std::string pathImg, std::string pathImg2, std::list<Moon*> moons, bool extra, bool rings, float aphelion, float perihelion, float diameter, float orbitalPeriod, float lengthDays, float orbitalInclination, float sunDiameter, float eccentricity):
+            _moons(moons),_aphelion(aphelion), _perihelion(perihelion), _extra(extra), _rings(rings), _diameter(log10(diameter)), _orbitalPeriod(orbitalPeriod), _lengthDays(lengthDays), _orbitalInclination(glm::radians(orbitalInclination)), _eccentricity(eccentricity), _sphere(Sphere(log10(diameter)/2.0f, 32, 16)){
                 FilePath applicationPath(path);
                 _programPlanet = {applicationPath, extra};
                 _imgPlanet = loadImage(pathImg);
-                _eccentricity = -1*((_perihelion / ((aphelion+perihelion)/2))-1);
-                _ellipse = Ellipse(path,perihelion, aphelion, _eccentricity, orbitalInclination);
+                _ellipse = Ellipse(path,_perihelion, _aphelion, _eccentricity, _orbitalInclination);
+                this->initVboVao();
                 this->initTexture();
                 if(_extra){
                     _imgExtra = loadImage(pathImg2);
@@ -44,15 +50,15 @@ namespace glimac {
                 }
             }
             
-            void drawPlanet(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera);
-            void drawPlanetRing(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera);
-            void drawPlanetExtra(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera);
-            void drawSimplePlanet(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera);
+            void drawPlanet(float sunDiameter, GLuint vao, float nb_vertex, float t, Camera* camera);
+            void drawPlanetRing(float sunDiameter, GLuint vao, float nb_vertex, float t, Camera* camera);
+            void drawPlanetExtra(float sunDiameter, GLuint vao, float nb_vertex, float t, Camera* camera);
+            void drawSimplePlanet(float sunDiameter, GLuint vao, float nb_vertex, float t, Camera* camera);
             
-            void drawPlanetAlone(float sunDiameter, float sunRotation, float nb_vertex, float t, GLuint vao, Camera* camera);
-            void drawPlanetRingAlone(float sunDiameter, float sunRotation, float nb_vertex, float t, GLuint vao, Camera* camera);
-            void drawPlanetExtraAlone(float sunDiameter, float sunRotation, float nb_vertex, float t, GLuint vao, Camera* camera);
-            void drawSimplePlanetAlone(float sunDiameter, float sunRotation, float nb_vertex, float t, GLuint vao, Camera* camera);
+            void drawPlanetAlone(float sunDiameter, float sunRotation, float nb_vertex, float t,  Camera* camera);
+            void drawPlanetRingAlone(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera);
+            void drawPlanetExtraAlone(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera);
+            void drawSimplePlanetAlone(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera);
             
             void deleteTextures();
     };

@@ -79,6 +79,8 @@ Moon.hpp
 /home/karim/Bureau/karim/VisuSysSol/GLImac-Template/glimac/include/glimac/Moon.hpp
 PlanetProgram.hpp
 /home/karim/Bureau/karim/VisuSysSol/GLImac-Template/glimac/include/glimac/PlanetProgram.hpp
+glimac/Sphere.hpp
+-
 list
 -
 
