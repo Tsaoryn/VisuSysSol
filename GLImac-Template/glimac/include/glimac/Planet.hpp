@@ -2,6 +2,7 @@
 #include "Moon.hpp"
 #include "PlanetProgram.hpp"
 #include <glimac/Sphere.hpp>
+#include <glimac/Ring.hpp>
 #include <list>
 
 namespace glimac {
@@ -14,6 +15,7 @@ namespace glimac {
             std::unique_ptr<Image> _imgExtra;
             std::list<Moon*> _moons;
             Ellipse _ellipse;
+            Ring _ring;
             
             GLuint _vbo;
             GLuint _vao;
@@ -36,7 +38,7 @@ namespace glimac {
         public:
           	Planet() : _sphere(Sphere(log10(1.0f)/2.0f, 32, 16)){}
           	Planet(Planet const&) : _sphere(Sphere(log10(1.0f)/2.0f, 32, 16)){}
-            Planet(char* path, std::string pathImg, std::string pathImg2, std::list<Moon*> moons, bool extra, bool rings, float aphelion, float perihelion, float diameter, float orbitalPeriod, float lengthDays, float orbitalInclination, float sunDiameter, float eccentricity, int num):
+            Planet(char* path, std::string pathImg, std::string pathImg2, std::list<Moon*> moons, bool extra, bool rings, float aphelion, float perihelion, float diameter, float orbitalPeriod, float lengthDays, float orbitalInclination, float sunDiameter, float eccentricity, int num, float radiusRing):
             _moons(moons),_aphelion(aphelion), _perihelion(perihelion), _extra(extra), _rings(rings), _diameter(log10(diameter)), _orbitalPeriod(orbitalPeriod), _lengthDays(lengthDays), _orbitalInclination(glm::radians(orbitalInclination)), _eccentricity(eccentricity), _sphere(Sphere(log10(diameter/2.0f), 32, 16)){
                 FilePath applicationPath(path);
                 _programPlanet = {applicationPath, extra};
@@ -44,7 +46,10 @@ namespace glimac {
                 _ellipse = Ellipse(path,_perihelion, _aphelion, _eccentricity, _orbitalInclination, num);
                 this->initVboVao();
                 this->initTexture();
-                if(_extra){
+                if(_rings){
+					//_ring = Ring(path,radiusRing, diameter,loadImage(pathImg2));
+				}
+                else if(_extra){
                     _imgExtra = loadImage(pathImg2);
                     this->initTextureExtra();
                 }
