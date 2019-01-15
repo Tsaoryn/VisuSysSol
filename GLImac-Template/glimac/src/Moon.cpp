@@ -37,11 +37,11 @@ namespace glimac{
         
         glm::mat4 viewMatrix = camera->getViewMatrix();
         
-        glm::mat4 MVMatrix = glm::translate(glm::mat4(1.0f),glm::vec3(0,0,-5))* viewMatrix; // Translation
+        glm::mat4 MVMatrix = viewMatrix; // Translation
         MVMatrix = glm::translate(MVMatrix,glm::vec3(xFinal,yFinal,zFinal));
         MVMatrix = glm::scale(MVMatrix, glm::vec3(scaleValue, scaleValue, scaleValue)); // Translation * Rotation * Translation * Scale
         
-        glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix))* viewMatrix;
+        glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix));
         glm::mat4 MVPMatrix = ProjMatrix * MVMatrix;
         
         glUniformMatrix4fv(_programMoon.uMVPMatrix,1,GL_FALSE,glm::value_ptr(MVPMatrix));

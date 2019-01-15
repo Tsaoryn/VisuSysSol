@@ -73,7 +73,7 @@ namespace glimac {
         
         glm::mat4 viewMatrix = camera->getViewMatrix();
         glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f);
-        glm::mat4 MVMatrix = glm::translate(glm::mat4(1.0f),glm::vec3(0,0,-5))* viewMatrix;
+        glm::mat4 MVMatrix = viewMatrix;
         MVMatrix = glm::rotate(MVMatrix, glm::radians(90.0f), glm::vec3(1, 0, 0));
         MVMatrix = glm::rotate(MVMatrix, _inclination, glm::vec3(1, 0, 0));
         
