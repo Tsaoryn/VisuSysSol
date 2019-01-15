@@ -66,16 +66,17 @@ namespace glimac{
 		float scaleValue = std::pow(10,_diameter)/std::pow(10,sunDiameter);
 		_ellipse.draw(camera);
         
-        float radian = glm::radians(t/_orbitalPeriod);
+        float tmp = (t/_orbitalPeriod);
+        float radian = glm::radians(tmp);
         
         std::pair<float,float> tuple = _ellipse.getEllipseAandB();
-		float xFinal = tuple.first*cos(radian);
-        float Y = tuple.second*sin(radian);
-        float y = Y*cos(glm::radians(90.0f));
-        float z = Y*sin(glm::radians(90.0f));
-        
-        float yFinal = y*cos(_orbitalInclination)-sin(_orbitalInclination)*z;
-        float zFinal = y*sin(_orbitalInclination)+cos(_orbitalInclination)*z;
+        float a = tuple.first;
+        float b = tuple.second;
+		float x = a*cos(radian);
+        float z = b*sin(radian);
+           
+        float y = -sin(_orbitalInclination)*z;
+        z = cos(_orbitalInclination)*z;
         
         _programPlanet.m_Program.use();
         glUniform1i(_programPlanet.uPlanetTexture, 0);
@@ -87,7 +88,7 @@ namespace glimac{
         glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f);
         glm::mat4 MVMatrix = viewMatrix; // Translation
         MVMatrix = glm::rotate(MVMatrix, t/_lengthDays, glm::vec3(0, 1, 0));
-        MVMatrix = glm::translate(MVMatrix,glm::vec3(xFinal,yFinal,zFinal));
+        MVMatrix = glm::translate(MVMatrix,glm::vec3(x,y,z));
         MVMatrix = glm::scale(MVMatrix, glm::vec3(scaleValue, scaleValue, scaleValue)); // Translation * Rotation * Translation * Scale
         
         glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix));
@@ -106,16 +107,17 @@ namespace glimac{
        float scaleValue = std::pow(10,_diameter)/std::pow(10,sunDiameter);
 		_ellipse.draw(camera);
         
-        float radian = glm::radians(t/_orbitalPeriod);
+        float tmp = (t/_orbitalPeriod);
+        float radian = glm::radians(tmp);
         
         std::pair<float,float> tuple = _ellipse.getEllipseAandB();
-		float xFinal = tuple.first*cos(radian);
-        float Y = tuple.second*sin(radian);
-        float y = Y*cos(glm::radians(90.0f));
-        float z = Y*sin(glm::radians(90.0f));
-        
-        float yFinal = y*cos(_orbitalInclination)-sin(_orbitalInclination)*z;
-        float zFinal = y*sin(_orbitalInclination)+cos(_orbitalInclination)*z;
+        float a = tuple.first;
+        float b = tuple.second;
+		float x = a*cos(radian);
+        float z = b*sin(radian);
+           
+        float y = -sin(_orbitalInclination)*z;
+        z = cos(_orbitalInclination)*z;
         
         _programPlanet.m_Program.use();
         glUniform1i(_programPlanet.uPlanetTexture, 0);
@@ -132,7 +134,7 @@ namespace glimac{
         glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f);
         glm::mat4 MVMatrix = viewMatrix; // Translation
         MVMatrix = glm::rotate(MVMatrix, t/_lengthDays, glm::vec3(0, 1, 0));
-        MVMatrix = glm::translate(MVMatrix,glm::vec3(xFinal,yFinal,zFinal));
+        MVMatrix = glm::translate(MVMatrix,glm::vec3(x,y,z));
         MVMatrix = glm::scale(MVMatrix, glm::vec3(scaleValue, scaleValue, scaleValue)); // Translation * Rotation * Translation * Scale
         
         glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix));
@@ -151,17 +153,18 @@ namespace glimac{
     void Planet::drawSimplePlanet(float sunDiameter, GLuint vao, float nb_vertex, float t, Camera* camera){
 		float scaleValue = std::pow(10,_diameter)/std::pow(10,sunDiameter);
 		_ellipse.draw(camera);
-        
-        float radian = glm::radians(t/_orbitalPeriod);
-        
+		
         std::pair<float,float> tuple = _ellipse.getEllipseAandB();
-		float xFinal = tuple.first*cos(radian);
-        float Y = tuple.second*sin(radian);
-        float y = Y*cos(glm::radians(90.0f));
-        float z = Y*sin(glm::radians(90.0f));
+        float a = tuple.first;
+        float b = tuple.second;
+        float tmp = (t/_orbitalPeriod);
+        float radian = glm::radians(tmp);
         
-        float yFinal = y*cos(_orbitalInclination)-sin(_orbitalInclination)*z;
-        float zFinal = y*sin(_orbitalInclination)+cos(_orbitalInclination)*z;
+		float x = a*cos(radian);
+        float z = b*sin(radian);
+           
+        float y = -sin(_orbitalInclination)*z;
+        z = cos(_orbitalInclination)*z;
         
         _programPlanet.m_Program.use();
         glUniform1i(_programPlanet.uPlanetTexture, 0);
@@ -173,7 +176,7 @@ namespace glimac{
         glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f);
         glm::mat4 MVMatrix = viewMatrix; // Translation
         MVMatrix = glm::rotate(MVMatrix, t/_lengthDays, glm::vec3(0, 1, 0));
-        MVMatrix = glm::translate(MVMatrix,glm::vec3(xFinal,yFinal,zFinal));
+        MVMatrix = glm::translate(MVMatrix,glm::vec3(x,y,z));
         MVMatrix = glm::scale(MVMatrix, glm::vec3(scaleValue, scaleValue, scaleValue)); // Translation * Rotation * Translation * Scale
         
         glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix));

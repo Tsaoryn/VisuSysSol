@@ -14,18 +14,18 @@ namespace glimac {
         for(float degree=0; degree<360; degree=degree+0.04f){
 			radian = glm::radians(degree);
 			float x = a*cos(radian);
-            float y = b*sin(radian);
+            float z = b*sin(radian);
             
 			ShapeVertex vertex;
 			         
             vertex.texCoords.x = x;
-            vertex.texCoords.y = y;
-
+            vertex.texCoords.y = z;
+			
             vertex.normal.x = x;
-            vertex.normal.y = y;
-            vertex.normal.z = 0;
+            vertex.normal.y = -sin(_inclination)*z;
+            vertex.normal.z = cos(_inclination)*z;
             
-            vertex.position = glm::vec3(x,y,0);
+            vertex.position = glm::vec3(x,-sin(_inclination)*z,cos(_inclination)*z);
             
             m_Vertices.push_back(vertex);
         }
@@ -74,8 +74,6 @@ namespace glimac {
         glm::mat4 viewMatrix = camera->getViewMatrix();
         glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f);
         glm::mat4 MVMatrix = viewMatrix;
-        MVMatrix = glm::rotate(MVMatrix, glm::radians(90.0f), glm::vec3(1, 0, 0));
-        MVMatrix = glm::rotate(MVMatrix, _inclination, glm::vec3(1, 0, 0));
         
         glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix))* viewMatrix;
         glm::mat4 MVPMatrix = ProjMatrix * MVMatrix;
