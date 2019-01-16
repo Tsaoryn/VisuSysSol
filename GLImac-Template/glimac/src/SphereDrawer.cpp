@@ -30,16 +30,24 @@ namespace glimac{
         
         /*vbo*/
         glGenBuffers(1, &_vbo);
-        
         glBindBuffer(GL_ARRAY_BUFFER, _vbo);
             const ShapeVertex * vertices = _sphere.getDataPointer();
-            glBufferData(GL_ARRAY_BUFFER, nb_floats*sizeof(GLfloat), vertices, GL_STATIC_DRAW);
+            glBufferStorage(GL_ARRAY_BUFFER,_sphere.getVertexCount()*sizeof(ShapeVertex),vertices,GL_DYNAMIC_STORAGE_BIT);
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         
+        /*ibo*/
+        glGenBuffers(1,&_ibo);
+	    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,_ibo);
+			const uint32_t * indices = _sphere.getIndicesPointer();
+			glBufferStorage(GL_ELEMENT_ARRAY_BUFFER,_sphere.getVerticesCount()*sizeof(uint32_t),_sphere.getIndicesPointer(),GL_DYNAMIC_STORAGE_BIT);
+	    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,0);
+  
         /*vao*/
         glGenVertexArrays(1, &_vao);
-        
         glBindVertexArray(_vao);
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ibo);
+			glBindVertexBuffer(0,_vbo,0,sizeof(ShapeVertex));
+			
             glEnableVertexAttribArray(VERTEX_ATTR_POSITION_SHADER);
             glEnableVertexAttribArray(VERTEX_ATTR_NORMAL_SHADER);
             glEnableVertexAttribArray(VERTEX_ATTR_TEX_SHADER);
@@ -49,6 +57,7 @@ namespace glimac{
                 glVertexAttribPointer(VERTEX_ATTR_TEX_SHADER, 2, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) (6*sizeof(GLfloat)));
         //débind
         glBindBuffer(GL_ARRAY_BUFFER, 0);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
         glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);//GL_FILL
     }
@@ -86,7 +95,9 @@ namespace glimac{
         glUniformMatrix4fv(_program.uMVMatrix,1,GL_FALSE,glm::value_ptr(MVMatrix));
         glUniformMatrix4fv(_program.uNormalMatrix,1,GL_FALSE,glm::value_ptr(NormalMatrix));
         
-        glDrawArrays(GL_TRIANGLES, 0, 8*_sphere.getVertexCount());
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ibo);
+		glDrawElements(GL_TRIANGLES, _sphere.getVerticesCount(), GL_UNSIGNED_INT,0);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
         if(_extra)
             glActiveTexture(GL_TEXTURE0);

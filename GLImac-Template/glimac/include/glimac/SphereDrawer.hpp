@@ -9,6 +9,7 @@ namespace glimac {
         private:
             GLuint _vbo;
             GLuint _vao;
+            GLuint _ibo;
             
             Sphere _sphere;
             float nb_vertices;

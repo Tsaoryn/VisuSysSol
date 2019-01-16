@@ -25,6 +25,14 @@ public:
         return &m_Vertices[0];
     }
     
+    const uint32_t* getIndicesPointer() const {
+        return &indicesIbo[0];
+    }
+    
+    GLsizei getVerticesCount() const {
+        return indicesIbo.size();
+    }
+    
     // Renvoit le nombre de vertex
     GLsizei getVertexCount() const {
         return m_nVertexCount;
@@ -32,6 +40,7 @@ public:
 
 private:
     std::vector<ShapeVertex> m_Vertices;
+    std::vector<uint32_t> indicesIbo;
     GLsizei m_nVertexCount; // Nombre de sommets
 };
     
