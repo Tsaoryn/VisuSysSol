@@ -7,8 +7,6 @@
 namespace glimac {
     
     void Ellipse::initVertices(){
-		float a = log10((_aphelion+_perihelion)/2.0f)+_additionalNum;
-		float b = log10(((_aphelion+_perihelion)/2.0f)*std::sqrt(1-(_eccentricity*_eccentricity)))+_additionalNum;
 		float radian;
 		
         for(float degree=0; degree<360; degree=degree+0.04f){
@@ -31,12 +29,6 @@ namespace glimac {
         }
         m_nVertexCount = m_Vertices.size();
     }
-    
-    std::pair<float,float> Ellipse::getEllipseAandB(){
-		float a = log10((_aphelion+_perihelion)/2.0f)+_additionalNum;
-		float b = log10(((_aphelion+_perihelion)/2.0f)*std::sqrt(1-(_eccentricity*_eccentricity)))+_additionalNum;
-		return std::pair<float,float>(a,b);
-	}
     
     void Ellipse::initVboVao(){
 		const int nb_floats = 8*m_nVertexCount;
@@ -66,6 +58,21 @@ namespace glimac {
         glBindVertexArray(0);
         glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
 	}
+    
+    glm::vec3 Ellipse::translationVector(float angle){
+        float radian = glm::radians(angle);
+        
+		float xFinal = a*cos(radian);
+        float Y = b*sin(radian);
+        float y = Y*cos(glm::radians(90.0f));
+        float z = Y*sin(glm::radians(90.0f));
+        
+        float yFinal = y*cos(_inclination)-sin(_inclination)*z;
+        float zFinal = y*sin(_inclination)+cos(_inclination)*z;
+        
+        
+        return glm::vec3(xFinal,yFinal,zFinal);
+    }
     
     void Ellipse::draw(Camera* camera){
         _programEllipse.m_Program.use();

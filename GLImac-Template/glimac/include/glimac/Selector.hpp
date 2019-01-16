@@ -5,9 +5,6 @@
 #include <glimac/FilePath.hpp>
 #include <glimac/Sun.hpp>
 
-#include <glimac/SunProgram.hpp>
-#include <glimac/PlanetProgram.hpp>
-#include <glimac/MoonProgram.hpp>
 #include <glimac/TrackballCamera.hpp>
 #include <glimac/FreeFlyCamera.hpp>
 #include <iostream>

@@ -13,11 +13,11 @@ namespace glimac{
     }
     
     void FreeFlyCamera::moveLeft(float t){
-        _m_Position += t * _m_LeftVector;
+        _m_Position += t*10 * _m_LeftVector;
     }
             
     void FreeFlyCamera::moveFront(float t){
-        _m_Position += t * _m_FrontVector;
+        _m_Position += t*10 * _m_FrontVector;
     }
     
     void FreeFlyCamera::rotateLeft(float degrees){

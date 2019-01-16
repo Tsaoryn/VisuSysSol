@@ -19,6 +19,8 @@ class Ellipse {
         float _aphelion;
         float _eccentricity;
         float _inclination;
+        float a;
+        float b;
         int _additionalNum;
         
         void initVertices();
@@ -30,11 +32,16 @@ class Ellipse {
         _perihelion(perihelion), _aphelion(aphelion), _eccentricity(eccentricity), _inclination(inclination), _additionalNum(num){
             FilePath applicationPath(path);
             _programEllipse = {applicationPath};
+            
+            a = log10((_aphelion+_perihelion)/2.0f)+_additionalNum;
+            b = log10(((_aphelion+_perihelion)/2.0f)*std::sqrt(1-(_eccentricity*_eccentricity)))+_additionalNum;
+            
             this->initVertices();
             this->initVboVao();
         }
         
-        std::pair<float,float> getEllipseAandB();
+        glm::vec3 translationVector(float angle);
         void draw(Camera* camera);
+        
     };
 }

@@ -104,9 +104,9 @@ namespace glimac{
 					_freeFlyOn = false;
 			}
             if(_fastModeOn)
-                time+=0.1;
+                time+=10.0;
             else
-                time+=0.01;
+                time+=0.1;
 			/***************************************************************************************/ 
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 			this->selectAction(time);

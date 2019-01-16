@@ -1,25 +1,15 @@
 #pragma once
 #include "Moon.hpp"
-#include "PlanetProgram.hpp"
-#include <glimac/Sphere.hpp>
-#include <glimac/Ring.hpp>
+#include "SphereDrawer.hpp"
 #include <list>
 
 namespace glimac {
     class Planet{
         private:
-            GLuint _texturePlanet;
-            GLuint _textureExtra;
-            PlanetProgram _programPlanet;
-            std::unique_ptr<Image> _imgPlanet;
-            std::unique_ptr<Image> _imgExtra;
             std::list<Moon*> _moons;
             Ellipse _ellipse;
-            Ring _ring;
             
-            GLuint _vbo;
-            GLuint _vao;
-            Sphere _sphere;
+            SphereDrawer _drawer;
                         
             bool _extra;
             bool _rings;
@@ -30,41 +20,20 @@ namespace glimac {
             float _orbitalPeriod;
             float _lengthDays;
             float _orbitalInclination;
-            
-            void initVboVao();
-            void initTexture();
-            void initTextureExtra();
 
         public:
-          	Planet() : _sphere(Sphere(log10(1.0f)/2.0f, 32, 16)){}
-          	Planet(Planet const&) : _sphere(Sphere(log10(1.0f)/2.0f, 32, 16)){}
-            Planet(char* path, std::string pathImg, std::string pathImg2, std::list<Moon*> moons, bool extra, bool rings, float aphelion, float perihelion, float diameter, float orbitalPeriod, float lengthDays, float orbitalInclination, float sunDiameter, float eccentricity, int num, float radiusRing):
-            _moons(moons),_aphelion(aphelion), _perihelion(perihelion), _extra(extra), _rings(rings), _diameter(log10(diameter)), _orbitalPeriod(orbitalPeriod), _lengthDays(lengthDays), _orbitalInclination(glm::radians(orbitalInclination)), _eccentricity(eccentricity), _sphere(Sphere(log10(diameter/2.0f), 32, 16)){
-                FilePath applicationPath(path);
-                _programPlanet = {applicationPath, extra};
-                _imgPlanet = loadImage(pathImg);
+          	Planet(){}
+          	Planet(Planet const&){}
+            Planet(char* path, std::string pathImg, std::string pathImg2, std::list<Moon*> moons, bool extra, bool rings, float aphelion, float perihelion, float diameter, float orbitalPeriod, float lengthDays, float orbitalInclination, float eccentricity, int num, float radiusRing, float sunDiameter):
+            _moons(moons),_aphelion(aphelion), _perihelion(perihelion), _diameter(diameter), _rings(rings), _extra(extra),_orbitalPeriod(orbitalPeriod), _lengthDays(lengthDays), _orbitalInclination(glm::radians(orbitalInclination)), _eccentricity(eccentricity){
+                
                 _ellipse = Ellipse(path,_perihelion, _aphelion, _eccentricity, _orbitalInclination, num);
-                this->initVboVao();
-                this->initTexture();
-                if(_rings){
-					//_ring = Ring(path,radiusRing, diameter,loadImage(pathImg2));
-				}
-                else if(_extra){
-                    _imgExtra = loadImage(pathImg2);
-                    this->initTextureExtra();
-                }
+                _drawer = SphereDrawer(path, pathImg, pathImg2, sunDiameter, rings, extra);
             }
             
-            void drawPlanet(float sunDiameter, GLuint vao, float nb_vertex, float t, Camera* camera);
-            void drawPlanetRing(float sunDiameter, GLuint vao, float nb_vertex, float t, Camera* camera);
-            void drawPlanetExtra(float sunDiameter, GLuint vao, float nb_vertex, float t, Camera* camera);
-            void drawSimplePlanet(float sunDiameter, GLuint vao, float nb_vertex, float t, Camera* camera);
-            
-            void drawPlanetAlone(float sunDiameter, float sunRotation, float nb_vertex, float t,  Camera* camera);
-            void drawPlanetRingAlone(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera);
-            void drawPlanetExtraAlone(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera);
-            void drawSimplePlanetAlone(float sunDiameter, float sunRotation, float nb_vertex, float t, Camera* camera);
-            
+
+            void drawPlanet(float sunDiameter, float t, Camera* camera);
+            void drawPlanetAlone(float sunDiameter, float t,  Camera* camera);
             void deleteTextures();
     };
 }

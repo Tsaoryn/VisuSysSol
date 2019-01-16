@@ -1,9 +1,5 @@
 #pragma once
-#include "MoonProgram.hpp"
-#include <glimac/TrackballCamera.hpp>
-#include <glimac/FreeFlyCamera.hpp>
-#include <glimac/Ellipse.hpp>
-#include <glimac/Image.hpp>
+#include "SphereDrawer.hpp"
 
 #include <iostream>
 
@@ -13,10 +9,8 @@ namespace glimac {
     class Moon{
     	
         private:
-            GLuint _textureMoon;
-            MoonProgram _programMoon;
-            std::unique_ptr<Image> _imgMoon;
-            std::string _name;
+            SphereDrawer _drawer;
+            
             Ellipse _ellipse;
 
             float _aphelion;
@@ -24,24 +18,19 @@ namespace glimac {
             float _eccentricity;
             float _diameter;
             float _inclination;
-            
-            void initTexture();
 
         public:
             Moon(){}
             Moon(Moon const&){}
-            Moon(char* path, std::string name, std::string pathImg, float majorAxis, float eccentricity, float diameter, float inclination, float planetDiameter, int num): _name(name),_eccentricity(eccentricity), _diameter(log10(diameter)), _inclination(glm::radians(inclination)){
-                FilePath applicationPath(path);
+            Moon(char* path, std::string pathImg, float majorAxis, float eccentricity, float diameter, float inclination, float planetDiameter, int num): _eccentricity(eccentricity), _diameter(diameter), _inclination(glm::radians(inclination)){
                 _aphelion = majorAxis * (1+eccentricity);
                 _perihelion = majorAxis * (1-eccentricity);
+                
                 _ellipse = Ellipse(path,_perihelion, _aphelion, _eccentricity, _inclination, num);
-                _programMoon = {applicationPath};
-                _imgMoon = loadImage(pathImg);
-                initTexture();
+                _drawer = SphereDrawer(path, pathImg, "", planetDiameter, false, false); 
             }
             
-            std::string getName();
-            void drawMoon(float planetDiameter, glm::mat4 ProjMatrix, float nb_vertex, float t, GLuint vao, Camera* camera);
+            void drawMoon(float planetDiameter, float t, Camera* camera);
             void deleteTextures();
     };
 }
