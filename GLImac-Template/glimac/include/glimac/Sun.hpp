@@ -3,6 +3,7 @@
 #include "Planet.hpp"
 #include "SphereDrawer.hpp"
 #include "Moon.hpp"
+#include <memory>
 
 namespace glimac {
     /* classe représentant le soleil */
@@ -11,7 +12,7 @@ namespace glimac {
             float _diameter;
             float _rotation;
             SphereDrawer _drawer;
-            std::vector<Planet*> _planets;
+            std::vector<std::shared_ptr<Planet>> _planets;
             // initialise les planètes du systeme et leurs lunes
             void initPlanets(char* path);
 
@@ -27,9 +28,9 @@ namespace glimac {
                 this->initPlanets(path);
             }
             // dessine une planete en vue planetaire
-            void drawOnePlanet(int numPlanet, float t, Camera* camera);
+            void drawOnePlanet(int numPlanet, float t, std::shared_ptr<Camera> camera);
             // dessine le systeme solaire
-            void drawSystem(float t, Camera* camera);
+            void drawSystem(float t, std::shared_ptr<Camera> camera);
             // suprimme les textures de toutes les planetes
             void deleteTextures();
     };

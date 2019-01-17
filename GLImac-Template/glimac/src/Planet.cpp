@@ -3,7 +3,7 @@
 
 namespace glimac{
     
-    void Planet::drawPlanet(float sunDiameter, float t, Camera* camera){
+    void Planet::drawPlanet(float sunDiameter, float t, std::shared_ptr<Camera> camera){
         float scaleValue = _diameter/sunDiameter;
         _ellipse.draw(camera);
         float angle = (t*1000/_orbitalPeriod);
@@ -13,7 +13,7 @@ namespace glimac{
     }
 
     
-    void Planet::drawPlanetAlone(float sunDiameter, float t, Camera* camera){
+    void Planet::drawPlanetAlone(float sunDiameter, float t, std::shared_ptr<Camera> camera){
         float scaleValue = log10(_diameter/2.0f)/log10(sunDiameter/2.0f);
         _drawer.drawPlanet(t, camera, false, _extra, _lengthDays, scaleValue);
         for(auto moon : _moons)

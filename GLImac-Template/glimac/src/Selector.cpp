@@ -97,12 +97,14 @@ namespace glimac{
 					_mode = 8;
 				else if(_windowManager->isKeyPressed(SDLK_p))
 					_mode = 9;
-				else if(_windowManager->isKeyPressed(SDLK_q))
+				else if(_windowManager->isKeyPressed(SDLK_w))
 					_mode = 0;
                 else if(_windowManager->isKeyPressed(SDLK_f))
 					_freeFlyOn = true;
                 else if(_windowManager->isKeyPressed(SDLK_t))
 					_freeFlyOn = false;
+                else if(_windowManager->isKeyPressed(SDLK_q))
+                    done = true;
 			}
             // on incremente time avec une valeur plus grande si on souhaite aller plus vite
             if(_fastModeOn)
@@ -131,7 +133,7 @@ namespace glimac{
 		}
 	}
     
-    Camera* Selector::getCamera(){
+    std::shared_ptr<Camera> Selector::getCamera(){
         if(_freeFlyOn)
             return _cameraFree;
         return _camera;

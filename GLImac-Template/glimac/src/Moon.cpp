@@ -4,7 +4,7 @@
 
 namespace glimac{
 
-    void Moon::drawMoon(float planetDiameter, float t, Camera* camera){
+    void Moon::drawMoon(float planetDiameter, float t, std::shared_ptr<Camera> camera){
         float scaleValue = _diameter/planetDiameter;
         _ellipse.draw(camera);
         float angle = (t*15.0f);

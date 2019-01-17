@@ -60,7 +60,7 @@ namespace glimac{
         glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);//GL_FILL
     }
     
-    void SphereDrawer::drawPlanet(float t, Camera* camera, bool toTranslate, bool _extra, float _lengthDays, float scaleValue, glm::vec3 vec){   
+    void SphereDrawer::drawPlanet(float t, std::shared_ptr<Camera> camera, bool toTranslate, bool _extra, float _lengthDays, float scaleValue, glm::vec3 vec){   
         _program.m_Program.use();
         glUniform1i(_program.uTexture, 0);
         // cas où la sphere à dessiner possède deux textures (Terre)

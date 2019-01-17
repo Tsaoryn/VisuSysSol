@@ -1,6 +1,6 @@
 #pragma once
 #include "SphereDrawer.hpp"
-
+#include <memory>
 #include <iostream>
 
 using namespace std;
@@ -30,7 +30,7 @@ namespace glimac {
                 _drawer = SphereDrawer(path, pathImg, "", planetDiameter, false, false); 
             }
             // dessine la lune
-            void drawMoon(float planetDiameter, float t, Camera* camera);
+            void drawMoon(float planetDiameter, float t, std::shared_ptr<Camera> camera);
             // suprime la texture liée à la lune
             void deleteTextures();
     };

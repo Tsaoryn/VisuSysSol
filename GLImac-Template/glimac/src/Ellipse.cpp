@@ -78,7 +78,7 @@ namespace glimac {
         return glm::vec3(xFinal,yFinal,zFinal);
     }
     
-    void Ellipse::draw(Camera* camera){
+    void Ellipse::draw(std::shared_ptr<Camera> camera){
         _programEllipse.m_Program.use();
 
         glBindVertexArray(_vao);

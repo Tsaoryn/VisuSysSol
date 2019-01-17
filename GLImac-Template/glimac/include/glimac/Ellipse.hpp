@@ -4,6 +4,7 @@
 #include "common.hpp"
 #include "glimac/Camera.hpp"
 #include <math.h>
+#include <memory>
 
 namespace glimac {
 
@@ -47,6 +48,6 @@ class Ellipse {
         // renvoie le vecteur de translation de l'origine au point en fonction de l'angle donné
         glm::vec3 translationVector(float angle);
         // dessine l'ellipse
-        void draw(Camera* camera);
+        void draw(std::shared_ptr<Camera> camera);
     };
 }
