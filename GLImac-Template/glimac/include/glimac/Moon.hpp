@@ -6,8 +6,8 @@
 using namespace std;
 
 namespace glimac {
+    /* classe qui represente une lune */
     class Moon{
-    	
         private:
             SphereDrawer _drawer;
             
@@ -29,8 +29,9 @@ namespace glimac {
                 _ellipse = Ellipse(path,_perihelion, _aphelion, _eccentricity, _inclination, num);
                 _drawer = SphereDrawer(path, pathImg, "", planetDiameter, false, false); 
             }
-            
+            // dessine la lune
             void drawMoon(float planetDiameter, float t, Camera* camera);
+            // suprime la texture liée à la lune
             void deleteTextures();
     };
 }

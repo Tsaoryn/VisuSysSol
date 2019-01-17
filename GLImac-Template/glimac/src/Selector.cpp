@@ -5,7 +5,8 @@ namespace glimac{
 		bool done = false;
         glm::vec2 mousePosition = _windowManager->getMousePosition();
         glm::vec2 mousePositionDiff; 
-        glm::vec2 tmp; 
+        glm::vec2 tmp;
+        // time sert à gerer la vitesse des spheres
         float time = 0.0f;
         
 		while(!done) {
@@ -103,6 +104,7 @@ namespace glimac{
                 else if(_windowManager->isKeyPressed(SDLK_t))
 					_freeFlyOn = false;
 			}
+            // on incremente time avec une valeur plus grande si on souhaite aller plus vite
             if(_fastModeOn)
                 time+=10.0;
             else

@@ -50,7 +50,7 @@ namespace glimac {
 		m_nVertexCount = discLat * discLong * 6;
 		
 		GLuint idx = 0;
-	   
+	    // construit la liste des sommets de l'ibo
 		for(uint32_t j = 0; j < discLong; ++j) {
 			uint32_t offset = j * (discLat + 1);
 			for(uint32_t i = 0; i < discLat; ++i) {

@@ -3,6 +3,7 @@
 using namespace std;
 
 namespace glimac {
+	/* classe abstraite regroupant la TrackBall Camera et la Free Fly Camera */
     class Camera{
         public:
             virtual void moveFront(float delta) = 0;

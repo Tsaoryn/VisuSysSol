@@ -7,7 +7,7 @@
 #include <math.h>
 
 namespace glimac {
-
+/* classe incomplète qui aurait du représenter les anneaux de Saturne et Uranus */
 class Ring {
     private:
         GLuint _vbo;
@@ -30,7 +30,7 @@ class Ring {
             this->initVertices();
             this->initVboVao();
         }
-        
+        // dessine l'anneau
         void draw(Camera* camera);
     };
 }

@@ -4,6 +4,7 @@
 #include <list>
 
 namespace glimac {
+    /* classe qui représente une planète */
     class Planet{
         private:
             std::list<Moon*> _moons;
@@ -31,9 +32,11 @@ namespace glimac {
                 _drawer = SphereDrawer(path, pathImg, pathImg2, sunDiameter, rings, extra);
             }
             
-
+            // dessine la planete sur le système solaire
             void drawPlanet(float sunDiameter, float t, Camera* camera);
-            void drawPlanetAlone(float sunDiameter, float t,  Camera* camera);
+            // dessine la planète en vue planétaire
+            void drawPlanetAlone(float sunDiameter, float t, Camera* camera);
+            // suprime la texture liée à la planete et ses lunes
             void deleteTextures();
     };
 }

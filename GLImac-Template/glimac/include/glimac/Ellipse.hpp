@@ -7,6 +7,7 @@
 
 namespace glimac {
 
+/* Classe servant à représenter les ellipses des planètes et des lunes */
 class Ellipse {
     private:
         std::vector<ShapeVertex> m_Vertices;
@@ -19,11 +20,14 @@ class Ellipse {
         float _aphelion;
         float _eccentricity;
         float _inclination;
-        float a;
-        float b;
-        int _additionalNum;
         
+        float a; // rayon majeur de l'ellipse
+        float b; // rayon mineur de l'ellipse
+        int _additionalNum; // nombre permettant d'augmenter la taille de l'ellipse afin de rendre la distance entre les orbites visuellement plus realiste
+        
+        // initialise les points de l'ellipse
         void initVertices();
+        // initialise le vbo et le vao de l'ellipse
         void initVboVao();
     public:
         Ellipse(){}
@@ -40,8 +44,9 @@ class Ellipse {
             this->initVboVao();
         }
         
+        // renvoie le vecteur de translation de l'origine au point en fonction de l'angle donné
         glm::vec3 translationVector(float angle);
+        // dessine l'ellipse
         void draw(Camera* camera);
-        
     };
 }

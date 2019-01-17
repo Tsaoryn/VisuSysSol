@@ -46,18 +46,16 @@ namespace glimac{
         glGenVertexArrays(1, &_vao);
         glBindVertexArray(_vao);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ibo);
-			glBindVertexBuffer(0,_vbo,0,sizeof(ShapeVertex));
-			
-            glEnableVertexAttribArray(VERTEX_ATTR_POSITION_SHADER);
-            glEnableVertexAttribArray(VERTEX_ATTR_NORMAL_SHADER);
-            glEnableVertexAttribArray(VERTEX_ATTR_TEX_SHADER);
-            glBindBuffer(GL_ARRAY_BUFFER, _vbo);
-                glVertexAttribPointer(VERTEX_ATTR_POSITION_SHADER, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) 0);
-                glVertexAttribPointer(VERTEX_ATTR_NORMAL_SHADER, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) (3*sizeof(GLfloat)));
-                glVertexAttribPointer(VERTEX_ATTR_TEX_SHADER, 2, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) (6*sizeof(GLfloat)));
-        //débind
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+		        glBindVertexBuffer(0,_vbo,0,sizeof(ShapeVertex));
+                    glEnableVertexAttribArray(VERTEX_ATTR_POSITION_SHADER);
+                    glEnableVertexAttribArray(VERTEX_ATTR_NORMAL_SHADER);
+                    glEnableVertexAttribArray(VERTEX_ATTR_TEX_SHADER);
+                    glBindBuffer(GL_ARRAY_BUFFER, _vbo);
+                        glVertexAttribPointer(VERTEX_ATTR_POSITION_SHADER, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) 0);
+                        glVertexAttribPointer(VERTEX_ATTR_NORMAL_SHADER, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) (3*sizeof(GLfloat)));
+                        glVertexAttribPointer(VERTEX_ATTR_TEX_SHADER, 2, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) (6*sizeof(GLfloat)));
+                    glBindBuffer(GL_ARRAY_BUFFER, 0);
+            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
         glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);//GL_FILL
     }
@@ -65,6 +63,7 @@ namespace glimac{
     void SphereDrawer::drawPlanet(float t, Camera* camera, bool toTranslate, bool _extra, float _lengthDays, float scaleValue, glm::vec3 vec){   
         _program.m_Program.use();
         glUniform1i(_program.uTexture, 0);
+        // cas où la sphere à dessiner possède deux textures (Terre)
         if(_extra){
             glUniform1i(_program.uExtraTexture, 1);
             glActiveTexture(GL_TEXTURE0);
@@ -82,11 +81,12 @@ namespace glimac{
         glm::mat4 viewMatrix = camera->getViewMatrix();
         glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f);
         glm::mat4 MVMatrix = viewMatrix;
-        //if(!toTranslate)
+        // cas où la sphere a besoin d'etre translatée sur une orbite
         if(toTranslate)
             MVMatrix = glm::translate(MVMatrix,vec);
         MVMatrix = glm::rotate(MVMatrix, (t/_lengthDays), glm::vec3(0, 1, 0));
         
+        // redimentionnage de la sphere
         MVMatrix = glm::scale(MVMatrix, glm::vec3(scaleValue, scaleValue, scaleValue));
         glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix));
         glm::mat4 MVPMatrix = ProjMatrix * MVMatrix;

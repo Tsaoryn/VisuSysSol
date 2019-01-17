@@ -10,6 +10,7 @@
 #include <iostream>
 
 namespace glimac {
+    /* classe gérant les interractions avec le clavier */
     class Selector{
         private:
             SDLWindowManager* _windowManager;
@@ -20,7 +21,9 @@ namespace glimac {
             int _mode = 0;
             Sun* _sun;
 			
+            // selon le mode de vision selectionné, la méthode appropriée est apellée
 			void selectAction(float time);
+            // retourne un pointeur vers la camera en cours d'utilisation
             Camera* getCamera();
             
         public:
@@ -29,7 +32,7 @@ namespace glimac {
                  _cameraFree = new FreeFlyCamera();
                  _sun = new Sun(path);
             }
-            
+            // boucle principale gerant toutes les interractions avec l'utilisateur
             int mainLoop();
     };
 }

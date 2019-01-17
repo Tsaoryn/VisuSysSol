@@ -7,7 +7,7 @@
 #define GLIMAC_SHADER_SRC(str) #str
 
 namespace glimac {
-
+/* classe fournie en TP */
 class Shader {
 public:
 	Shader(GLenum type): m_nGLId(glCreateShader(type)) {

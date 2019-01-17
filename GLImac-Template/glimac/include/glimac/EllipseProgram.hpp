@@ -4,6 +4,7 @@
 using namespace std;
 
 namespace glimac {
+    // les ellipses ont un programme différent des spheres car elles n'utilisent pas les memes shaders et n'ont pas de textures
     class EllipseProgram{
 
         public:

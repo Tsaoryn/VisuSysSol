@@ -5,7 +5,7 @@
 #include "FilePath.hpp"
 
 namespace glimac {
-
+/* classe fournie en TP */
 class Program {
 public:
 	Program(): m_nGLId(glCreateProgram()) {

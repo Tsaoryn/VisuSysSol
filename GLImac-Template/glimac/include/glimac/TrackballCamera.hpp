@@ -3,6 +3,7 @@
 #include <glimac/Camera.hpp>
 
 namespace glimac {
+    /* classe faite en TP */
     class TrackballCamera : public Camera{
         private:
             float _m_fDistance;

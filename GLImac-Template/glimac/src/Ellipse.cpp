@@ -5,12 +5,16 @@
 #include "glimac/common.hpp"
 
 namespace glimac {
-    
+    // equation d'un point d'une ellipse : x=a*cos(theta), y=b*cos(theta)
+    // on place toujours les points à partir de l'origine
     void Ellipse::initVertices(){
 		float radian;
-		
+		// on initialise tous les points de l'ellipse
         for(float degree=0; degree<360; degree=degree+0.04f){
 			radian = glm::radians(degree);
+			/* on definie directement les coordonnées des points de l'ellipse pour ne pas faire de glm::rotate plus tard
+			* cela nous permet d'enregistrer les vraies coordonnées des points, ils sont donc placés comme si ils avaient été crées en fonction des axes X et Y suivie d'une rotation de 90°, suivie d'une rotation dépendant du degré d'inclinaison de l'ellipse
+			*/
 			float x = a*cos(radian);
             float z = b*sin(radian);
             
@@ -31,6 +35,7 @@ namespace glimac {
     }
     
     void Ellipse::initVboVao(){
+    	// nous n'avons pas besoin d'ibo pour l'ellipse, car l'odre de liaison des points est longiligne
 		const int nb_floats = 8*m_nVertexCount;
 		const GLuint VERTEX_ATTR_POSITION = 0;
         const GLuint VERTEX_ATTR_POSITION_SHADER = 0;
@@ -53,8 +58,7 @@ namespace glimac {
             glBindBuffer(GL_ARRAY_BUFFER, _vbo);
                 glVertexAttribPointer(VERTEX_ATTR_POSITION_SHADER, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) 0);
                 glVertexAttribPointer(VERTEX_ATTR_NORMAL_SHADER, 3, GL_FLOAT, GL_FALSE, 8*sizeof(GLfloat),(const GLvoid*) (3*sizeof(GLfloat)));
-        //débind
-        glBindBuffer(GL_ARRAY_BUFFER, 0);
+            glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
         glPolygonMode(GL_FRONT_AND_BACK,GL_FILL);
 	}
@@ -76,21 +80,20 @@ namespace glimac {
     
     void Ellipse::draw(Camera* camera){
         _programEllipse.m_Program.use();
+
         glBindVertexArray(_vao);
-        
-        glm::mat4 viewMatrix = camera->getViewMatrix();
-        glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f);
-        glm::mat4 MVMatrix = viewMatrix;
-        
-        glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix))* viewMatrix;
-        glm::mat4 MVPMatrix = ProjMatrix * MVMatrix;
-        
-        glUniformMatrix4fv(_programEllipse.uMVPMatrix,1,GL_FALSE,glm::value_ptr(MVPMatrix));
-        glUniformMatrix4fv(_programEllipse.uMVMatrix,1,GL_FALSE,glm::value_ptr(MVMatrix));
-        glUniformMatrix4fv(_programEllipse.uNormalMatrix,1,GL_FALSE,glm::value_ptr(NormalMatrix));
-        
-        glDrawArrays(GL_LINE_LOOP, 0, m_nVertexCount);
-        
+            glm::mat4 viewMatrix = camera->getViewMatrix();
+            glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f);
+            glm::mat4 MVMatrix = viewMatrix;
+            
+            glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix))* viewMatrix;
+            glm::mat4 MVPMatrix = ProjMatrix * MVMatrix;
+            
+            glUniformMatrix4fv(_programEllipse.uMVPMatrix,1,GL_FALSE,glm::value_ptr(MVPMatrix));
+            glUniformMatrix4fv(_programEllipse.uMVMatrix,1,GL_FALSE,glm::value_ptr(MVMatrix));
+            glUniformMatrix4fv(_programEllipse.uNormalMatrix,1,GL_FALSE,glm::value_ptr(NormalMatrix));
+            
+            glDrawArrays(GL_LINE_LOOP, 0, m_nVertexCount);
         glBindVertexArray(0);
     }
 

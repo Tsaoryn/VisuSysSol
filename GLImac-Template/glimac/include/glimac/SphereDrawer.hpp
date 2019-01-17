@@ -5,6 +5,7 @@
 #include "GeneralProgram.hpp"
 
 namespace glimac {
+    /* classe de dessin des spheres */
     class SphereDrawer{
         private:
             GLuint _vbo;
@@ -21,8 +22,11 @@ namespace glimac {
             std::unique_ptr<Image> _imgOne;
             std::unique_ptr<Image> _imgTwo;
             
+            // initialise le vbo et le vao de l'ellipse
             void initVboVao();
+            // initialise la première texture
             void initTexture();
+            // initialise la deuxieme texture si besoin
             void initTextureExtra();
 
         public:
@@ -43,9 +47,11 @@ namespace glimac {
                 }
                 this->initVboVao();
             }
-            
+            // Retourne le nombre de sommet de la sphere
             int getNbVertices();
+            // dessine la planete
             void drawPlanet(float t, Camera* camera, bool toTranslate, bool _extra, float _lengthDays, float scaleValue, glm::vec3 vec = glm::vec3(0,0,0));
+            // suprime la texture liée à la planete
             void deleteTextures(bool _extra);
     };
 }

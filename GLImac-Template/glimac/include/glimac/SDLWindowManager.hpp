@@ -5,7 +5,7 @@
 #include "glm.hpp"
 
 namespace glimac {
-
+/* classe fournie en TP */
 class SDLWindowManager {
 public:
     SDLWindowManager(uint32_t width, uint32_t height, const char* title);

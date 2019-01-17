@@ -3,7 +3,7 @@
 #include <string>
 
 namespace glimac {
-
+/* classe fournie en TP */
 class FilePath {
 public:
 #ifdef _WIN32
