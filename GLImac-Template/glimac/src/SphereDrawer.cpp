@@ -82,10 +82,10 @@ namespace glimac{
         glm::mat4 viewMatrix = camera->getViewMatrix();
         glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f);
         glm::mat4 MVMatrix = viewMatrix;
-        if(!toTranslate)
-            MVMatrix = glm::rotate(MVMatrix, (t/_lengthDays), glm::vec3(0, 1, 0));
+        //if(!toTranslate)
         if(toTranslate)
             MVMatrix = glm::translate(MVMatrix,vec);
+        MVMatrix = glm::rotate(MVMatrix, (t/_lengthDays), glm::vec3(0, 1, 0));
         
         MVMatrix = glm::scale(MVMatrix, glm::vec3(scaleValue, scaleValue, scaleValue));
         glm::mat4 NormalMatrix = glm::transpose(glm::inverse(MVMatrix));
