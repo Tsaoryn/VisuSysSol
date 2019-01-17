@@ -37,7 +37,7 @@ namespace glimac {
                 
                 _camera = std::make_shared<TrackballCamera>();
                 _cameraFree = std::make_shared<FreeFlyCamera>();
-                _background = SphereDrawer(path, pathBackground, "", 100.0f, false, false, true);
+                _background = SphereDrawer(path, pathBackground, "", 1.0f, false, false, true);
                 _sun = shared_ptr<Sun>(new Sun(path, subPath));
             }
             // boucle principale gerant toutes les interractions avec l'utilisateur
