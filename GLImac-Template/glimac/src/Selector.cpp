@@ -8,6 +8,8 @@ namespace glimac{
         glm::vec2 tmp;
         // time sert à gerer la vitesse des spheres
         float time = 0.0f;
+        glEnable(GL_DEPTH_TEST);
+        
         
 		while(!done) {
 			// Event loop:
@@ -67,6 +69,7 @@ namespace glimac{
                     _camera->rotateUp(0);
                 }
             }
+            
             /*Events choice mode************************************************/ 
             if( e.type == SDL_KEYDOWN ){
                 if(_windowManager->isKeyPressed(SDLK_UP))
@@ -113,6 +116,7 @@ namespace glimac{
                 time+=0.1;
 			/***************************************************************************************/ 
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            _background.drawPlanet(time, this->getCamera(), false, false, 10.0f, 1.0f);
 			this->selectAction(time);
 			_windowManager->swapBuffers();
 		}

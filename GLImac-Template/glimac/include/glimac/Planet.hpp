@@ -30,7 +30,7 @@ namespace glimac {
             _moons(moons),_aphelion(aphelion), _perihelion(perihelion), _diameter(diameter), _rings(rings), _extra(extra),_orbitalPeriod(orbitalPeriod), _lengthDays(lengthDays), _orbitalInclination(glm::radians(orbitalInclination)), _eccentricity(eccentricity){
                 
                 _ellipse = Ellipse(path,_perihelion, _aphelion, _eccentricity, _orbitalInclination, num);
-                _drawer = SphereDrawer(path, pathImg, pathImg2, sunDiameter, rings, extra);
+                _drawer = SphereDrawer(path, pathImg, pathImg2, sunDiameter, rings, extra, false);
             }
             
             // dessine la planete sur le système solaire

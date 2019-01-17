@@ -14,18 +14,13 @@ namespace glimac {
             SphereDrawer _drawer;
             std::vector<std::shared_ptr<Planet>> _planets;
             // initialise les planètes du systeme et leurs lunes
-            void initPlanets(char* path);
+            void initPlanets(char* path, std::string subPath);
 
         public:
-            Sun(char* path, std::string pathImg = "/assets/textures/SunMap.jpg", float diameter = 1391016.0f,float rotation = 25.0f*24):
+            Sun(char* path, std::string subPath,std::string pathImg = "/assets/textures/SunMap.jpg", float diameter = 1391016.0f,float rotation = 25.0f*24):
              _diameter(diameter), _rotation(rotation){
-    
-                ifstream file("../GLImac-Template/assets/ressources/path.txt");
-                std::string subPath;
-                getline(file, subPath);
-                
-                _drawer = SphereDrawer(path, subPath+pathImg, "", _diameter, false, false);
-                this->initPlanets(path);
+                _drawer = SphereDrawer(path, subPath+pathImg, "", _diameter, false, false, false);
+                this->initPlanets(path,subPath);
             }
             // dessine une planete en vue planetaire
             void drawOnePlanet(int numPlanet, float t, std::shared_ptr<Camera> camera);

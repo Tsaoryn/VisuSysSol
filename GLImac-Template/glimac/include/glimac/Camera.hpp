@@ -9,6 +9,6 @@ namespace glimac {
             virtual void moveFront(float delta) = 0;
             virtual void rotateLeft(float degrees) = 0;
             virtual void rotateUp(float degrees) = 0;
-            virtual glm::mat4 getViewMatrix() const = 0;
+            virtual glm::mat4 getViewMatrix(bool isBackground) const = 0;
     };
 }

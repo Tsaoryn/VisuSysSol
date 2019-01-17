@@ -30,7 +30,10 @@ namespace glimac{
         this->computeDirectionVectors();
     }
     
-    glm::mat4 FreeFlyCamera::getViewMatrix() const{
+    glm::mat4 FreeFlyCamera::getViewMatrix(bool isBackground) const{
+        if (isBackground) {
+            return glm::lookAt(glm::vec3(0.0f, 0.0f, 0.0f), _m_FrontVector, _m_UpVector);
+        }
         return glm::lookAt(_m_Position, _m_Position+_m_FrontVector, _m_UpVector);
     }
 }

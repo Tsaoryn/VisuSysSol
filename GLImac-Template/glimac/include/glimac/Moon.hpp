@@ -27,7 +27,7 @@ namespace glimac {
                 _perihelion = majorAxis * (1-eccentricity);
                 
                 _ellipse = Ellipse(path,_perihelion, _aphelion, _eccentricity, _inclination, num);
-                _drawer = SphereDrawer(path, pathImg, "", planetDiameter, false, false); 
+                _drawer = SphereDrawer(path, pathImg, "", planetDiameter, false, false, false); 
             }
             // dessine la lune
             void drawMoon(float planetDiameter, float t, std::shared_ptr<Camera> camera);

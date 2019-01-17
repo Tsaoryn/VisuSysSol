@@ -78,13 +78,19 @@ namespace glimac{
         glBindVertexArray(_vao);
         
         //Matrices------------------------------------------------------------------------------------------------------------------------
-        glm::mat4 viewMatrix = camera->getViewMatrix();
+        glm::mat4 viewMatrix = camera->getViewMatrix(_isBackground);
         glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f);
         glm::mat4 MVMatrix = viewMatrix;
         // cas où la sphere a besoin d'etre translatée sur une orbite
         if(toTranslate)
             MVMatrix = glm::translate(MVMatrix,vec);
-        MVMatrix = glm::rotate(MVMatrix, (t/_lengthDays), glm::vec3(0, 1, 0));
+        
+        if(!_isBackground)
+            MVMatrix = glm::rotate(MVMatrix, (t/_lengthDays), glm::vec3(0, 1, 0));
+        else{
+            glDisable(GL_DEPTH_TEST);
+        }
+            
         
         // redimentionnage de la sphere
         MVMatrix = glm::scale(MVMatrix, glm::vec3(scaleValue, scaleValue, scaleValue));
@@ -102,6 +108,9 @@ namespace glimac{
         if(_extra)
             glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D,0);
+        
+        if(_isBackground)
+            glEnable(GL_DEPTH_TEST);
     }
     
     int SphereDrawer::getNbVertices(){

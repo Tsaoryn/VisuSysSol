@@ -82,7 +82,7 @@ namespace glimac {
         _programEllipse.m_Program.use();
 
         glBindVertexArray(_vao);
-            glm::mat4 viewMatrix = camera->getViewMatrix();
+            glm::mat4 viewMatrix = camera->getViewMatrix(false);
             glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f),1000.f/1000.f,0.1f,100.f);
             glm::mat4 MVMatrix = viewMatrix;
             

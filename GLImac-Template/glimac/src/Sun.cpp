@@ -2,15 +2,8 @@
 #include <iostream>
 namespace glimac{
     
-    void Sun::initPlanets(char* path){
-        //don't forget to change the path in path.txt when you change your location
+    void Sun::initPlanets(char* path,std::string subPath){
         std::list<std::shared_ptr<Moon>> moons = {};
-        
-        ifstream file("../GLImac-Template/assets/ressources/path.txt");
-        std::string subPath;
-        getline(file, subPath);
- 
-        
         std::string pathMoon = subPath+"/assets/textures/MoonMap.jpg";
         std::shared_ptr<Moon> moon = std::shared_ptr<Moon>(new Moon(path,pathMoon,384400.0f,0.0549f,3475.0f,5.145f,12756.0f,1));
         

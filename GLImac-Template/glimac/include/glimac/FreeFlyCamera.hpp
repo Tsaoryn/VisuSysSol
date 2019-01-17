@@ -30,6 +30,6 @@ namespace glimac {
             // tourne la camera sur l'axe vertical
             void rotateUp(float degrees);
             // retourne la viewMatrix de la camera
-            glm::mat4 getViewMatrix() const;
+            glm::mat4 getViewMatrix(bool isBackground) const;
     };
 }

@@ -12,6 +12,7 @@ namespace glimac {
             GLuint _vbo;
             GLuint _vao;
             GLuint _ibo;
+            bool _isBackground;
             
             Sphere _sphere;
             float nb_vertices;
@@ -32,7 +33,7 @@ namespace glimac {
 
         public:
             SphereDrawer(){}
-            SphereDrawer(char* path, std::string pathImg, std::string pathImg2, float sphereDiameter, bool rings, bool extra) : _sphere(Sphere(log10(sphereDiameter/2.0f), 32, 16)){
+            SphereDrawer(char* path, std::string pathImg, std::string pathImg2, float sphereDiameter, bool rings, bool extra, bool isBackground) : _isBackground(isBackground),_sphere(Sphere(log10(sphereDiameter/2.0f), 32, 16)){
                 FilePath applicationPath(path);
                 
                 _program = {applicationPath, extra};

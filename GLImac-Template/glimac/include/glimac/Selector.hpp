@@ -17,6 +17,7 @@ namespace glimac {
             SDLWindowManager* _windowManager;
             std::shared_ptr<TrackballCamera> _camera;
             std::shared_ptr<FreeFlyCamera> _cameraFree;
+            SphereDrawer _background;
             bool _freeFlyOn;
             bool _fastModeOn;
             int _mode = 0;
@@ -29,9 +30,15 @@ namespace glimac {
             
         public:
             Selector(SDLWindowManager* windowManager, char* path, bool freeFlyOn = false, bool fastModeOn = false) : _windowManager(windowManager),_freeFlyOn(freeFlyOn),_fastModeOn(fastModeOn){
+                ifstream file("../GLImac-Template/assets/ressources/path.txt");
+                std::string subPath;
+                getline(file, subPath);
+                std::string pathBackground = subPath+"/assets/textures/Stars.jpg";
+                
                 _camera = std::make_shared<TrackballCamera>();
                 _cameraFree = std::make_shared<FreeFlyCamera>();
-                _sun = shared_ptr<Sun>(new Sun(path));
+                _background = SphereDrawer(path, pathBackground, "", 100.0f, false, false, true);
+                _sun = shared_ptr<Sun>(new Sun(path, subPath));
             }
             // boucle principale gerant toutes les interractions avec l'utilisateur
             int mainLoop();
